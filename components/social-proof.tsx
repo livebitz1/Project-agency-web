@@ -80,7 +80,7 @@ export function SocialProof() {
                   }}
                 >
                   <div className="group relative">
-                    <div className="flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-full bg-gradient-to-br from-background to-muted border border-border/50 shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-110 cursor-pointer">
+                    <div className="flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-full bg-gradient-to-br from-background to-muted border border-black/10 shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-110 cursor-pointer">
                       <Icon
                         className={`h-6 w-6 md:h-9 md:w-9 ${tool.color} transition-transform duration-300 group-hover:scale-110`}
                         strokeWidth={1.5}
@@ -110,7 +110,7 @@ export function SocialProof() {
                     }}
                   >
                     <div className="group relative">
-                      <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br from-background to-muted border border-border/50 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+                      <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br from-background to-muted border border-black/10 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
                         <Icon
                           className={`h-6 w-6 sm:h-8 sm:w-8 ${tool.color} transition-transform duration-300 group-hover:scale-110`}
                           strokeWidth={1.5}
