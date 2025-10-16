@@ -80,9 +80,11 @@ export function SocialProof() {
                   }}
                 >
                   <div className="group relative">
-                    <div className="flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-full bg-gradient-to-br from-background to-muted border border-black/10 shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-110 cursor-pointer">
+                    <div className="flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-full bg-white border border-black/10 shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 group-hover:bg-black overflow-hidden relative cursor-pointer">
+                      {/* glossy highlight */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent opacity-60 pointer-events-none" />
                       <Icon
-                        className={`h-6 w-6 md:h-9 md:w-9 ${tool.color} transition-transform duration-300 group-hover:scale-110`}
+                        className={`relative h-6 w-6 md:h-9 md:w-9 text-black transition-colors duration-300 group-hover:text-white`}
                         strokeWidth={1.5}
                       />
                     </div>
@@ -110,9 +112,10 @@ export function SocialProof() {
                     }}
                   >
                     <div className="group relative">
-                      <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br from-background to-muted border border-black/10 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+                      <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-white border border-black/10 shadow-md transition-colors duration-300 group-hover:bg-black overflow-hidden cursor-pointer">
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent opacity-60 pointer-events-none" />
                         <Icon
-                          className={`h-6 w-6 sm:h-8 sm:w-8 ${tool.color} transition-transform duration-300 group-hover:scale-110`}
+                          className={`relative h-6 w-6 sm:h-8 sm:w-8 text-black transition-colors duration-300 group-hover:text-white`}
                           strokeWidth={1.5}
                         />
                       </div>

@@ -94,17 +94,38 @@ export function HeroSection() {
 
       {/* CARDS image displayed after the hero section */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
-        <div ref={imageRef} className={`mx-auto max-w-4xl transition-all duration-700 ${imageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-           <Image
-             src="/CARDS.png"
-             alt="Cards"
-             width={1200}
-             height={420}
-             className="w-full h-auto rounded-xl shadow-lg"
-             priority={false}
-           />
-         </div>
-       </div>
-     </>
-   )
+        <div
+          ref={imageRef}
+          className={`mx-auto max-w-4xl transition-all duration-700 ${imageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
+          {/* padded wrapper so animated border sits around the image */}
+          <div className="relative p-3">
+            <Image
+              src="/CARDS.png"
+              alt="Cards"
+              width={1200}
+              height={420}
+              className="w-full h-auto rounded-xl shadow-lg block"
+              priority={false}
+            />
+
+            {/* SVG animated border overlay (scales responsively with the container) */}
+            <svg
+              className="pointer-events-none absolute inset-0 w-full h-full"
+              viewBox="0 0 1200 420"
+              preserveAspectRatio="none"
+              aria-hidden
+            >
+              {/* subtle static border */}
+              <rect x="6" y="6" width="1188" height="408" rx="20" fill="none" stroke="rgba(0,0,0,0.08)" strokeWidth="2" />
+              {/* animated dashed border */}
+              <rect x="6" y="6" width="1188" height="408" rx="20" fill="none" stroke="rgba(0,0,0,0.9)" strokeWidth="3" strokeDasharray="40 300">
+                <animate attributeName="stroke-dashoffset" from="0" to="-340" dur="6s" repeatCount="indefinite" />
+              </rect>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
