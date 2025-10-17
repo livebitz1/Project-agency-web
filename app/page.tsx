@@ -4,6 +4,7 @@ import { SocialProof } from "@/components/social-proof"
 import { ValueSection } from "@/components/value-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
+import { PricingSection } from "@/components/pricing-section"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <main className="relative overflow-hidden">
         <HeroSection />
         <SocialProof />
+        <PricingSection />
 
         {/* Divider */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

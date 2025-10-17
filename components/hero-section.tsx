@@ -18,7 +18,11 @@ export function HeroSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setImageVisible(true)
+        if (entry.isIntersecting) {
+          setImageVisible(true)
+          // stop observing after first reveal so it only appears once
+          if (imageRef.current) observer.unobserve(imageRef.current)
+        }
       },
       { threshold: 0.2 },
     )
@@ -29,7 +33,7 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="relative overflow-hidden pt-20 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32">
+      <section className="relative overflow-hidden pt-8 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32">
         {/* Subtle background gradient */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
@@ -56,8 +60,8 @@ export function HeroSection() {
             }`}
           >
             <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
-              Innovating Beyond
-              <span className="block bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              Innovating Beyond<br />
+              <span className="block bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent pixels-underline">
                 Pixels
               </span>
             </h1>
@@ -69,10 +73,22 @@ export function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
-            <p className="max-w-2xl text-center text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Transform your ideas into powerful digital products. We deliver cutting-edge solutions that drive real
-              results for teams that dare to innovate.
-            </p>
+            <div className="relative w-full flex justify-center">
+              <p className="max-w-2xl text-center text-base sm:text-lg text-muted-foreground leading-relaxed z-10">
+                Transform your ideas into powerful digital products. We deliver cutting-edge solutions that drive real
+                results for teams that dare to innovate.
+              </p>
+
+              {/* decorative images positioned around the subtitle; hidden on very small screens */}
+              <div className="hero-images pointer-events-none" aria-hidden>
+                <div className="hero-img hero-img-left">
+                  <Image src="https://i.pinimg.com/736x/83/61/c9/8361c92f68359d31e5026a6a3bd34b5a.jpg" alt="Decorative left" width={220} height={140} className="rounded-lg shadow-lg block" />
+                </div>
+                <div className="hero-img hero-img-right">
+                  <Image src="https://i.pinimg.com/736x/c8/39/d9/c839d92d60ca9a947b474b0b5cfe3314.jpg" alt="Decorative right" width={220} height={140} className="rounded-lg shadow-lg block" />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* CTA Buttons */}
@@ -81,11 +97,11 @@ export function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
-            <Button size="lg" className="rounded-full px-8 font-medium">
+            <Button size="lg" className="rounded-full px-8 font-medium cta-primary" aria-label="Get started with ProHub">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 font-medium bg-transparent">
+            <Button size="lg" variant="outline" className="rounded-full px-8 font-medium bg-transparent cta-secondary" aria-label="Watch demo video">
               Watch Demo
             </Button>
           </div>
@@ -93,7 +109,9 @@ export function HeroSection() {
       </section>
 
       {/* CARDS image displayed after the hero section */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+      {/* Decorative preview cards above the main CARDS image (removed as requested) */}
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-16">
         <div
           ref={imageRef}
           className={`mx-auto max-w-4xl transition-all duration-700 ${imageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
@@ -126,6 +144,94 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+      {/* hero-specific styles and micro-interactions */}
+      <style jsx>{`
+        /* animated underline for 'Pixels' */
+        .pixels-underline { position: relative; display: inline-block; }
+        .pixels-underline::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: -6px;
+          transform: translateX(-50%) scaleX(0);
+          transform-origin: center;
+          width: 70%;
+          height: 6px;
+          border-radius: 6px;
+          background: linear-gradient(90deg, rgba(59,130,246,0.18), rgba(59,130,246,0.36));
+          transition: transform 520ms cubic-bezier(.2,.9,.2,1), opacity 380ms ease;
+          opacity: 0.9;
+        }
+        /* reveal when hero visible */
+        .${isVisible ? 'pixels-underline' : 'pixels-underline'}::after { transform: translateX(-50%) scaleX(1); }
+
+        /* CTA styles */
+        .cta-primary { box-shadow: 0 10px 30px rgba(59,130,246,0.12); background: linear-gradient(90deg, var(--primary), rgba(59,130,246,0.9)); color: white; }
+        .cta-primary:hover { transform: translateY(-3px); }
+        .cta-secondary { border-color: rgba(16,24,40,0.06); }
+
+        /* decorative hero images */
+        .hero-images { display: none; }
+        @media (min-width: 640px) {
+          .hero-images { display: block; position: absolute; left: 0; right: 0; top: -20px; bottom: -20px; pointer-events: none; }
+          .hero-img { position: absolute; opacity: 0.95; transition: transform 680ms cubic-bezier(.2,.9,.2,1), opacity 300ms ease; }
+          .hero-img-left { left: 0; top: 18%; transform: translateX(-12%) rotate(-3deg); }
+          .hero-img-right { right: 0; top: 18%; transform: translateX(12%) rotate(3deg); }
+           /* gentle float */
+          .hero-img { animation: hero-float 8s ease-in-out infinite; }
+          @keyframes hero-float { 0% { transform: translateY(0) } 50% { transform: translateY(-8px) } 100% { transform: translateY(0) } }
+        }
+
+        /* respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          .pixels-underline::after, .cta-primary:hover, .hero-img { transition: none !important; transform: none !important; animation: none !important; }
+        }
+
+        /* hero section decorative images */
+        .hero-images {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          max-width: 1200px;
+          pointer-events: none;
+        }
+        .hero-img {
+          position: absolute;
+          border-radius: 0.5rem;
+          overflow: hidden;
+          will-change: transform, opacity;
+        }
+        .hero-img-left {
+          top: 0;
+          left: -240px;
+          opacity: 0.7;
+          animation: slideIn 0.8s forwards;
+        }
+        .hero-img-right {
+          top: 0;
+          right: -240px;
+          opacity: 0.7;
+          animation: slideIn 0.8s forwards;
+        }
+
+        @keyframes slideIn {
+          0% { transform: translateY(20px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 0.7; }
+        }
+
+        /* hide decorative images on very small screens */
+        @media (max-width: 639px) {
+          .hero-images { display: none !important; }
+        }
+      `}</style>
+
+      <style jsx global>{`
+        /* Prevent overscroll bounce/scroll-chaining so user cannot scroll up past the top (navbar) */
+        html, body, #__next {
+          overscroll-behavior-y: none;
+        }
+      `}</style>
     </>
   )
 }
