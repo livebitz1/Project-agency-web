@@ -192,7 +192,7 @@ export function SocialProof() {
 
                     {/* Client review bubble */}
                     <div className="mt-3">
-                      <div className="rounded-2xl bg-muted-foreground/6 p-4 text-sm text-foreground leading-relaxed shadow-sm">
+                      <div className="rounded-2xl bg-muted-foreground/6 p-4 text-sm text-foreground leading-relaxed shadow-sm doodle-anim">
                         <span className="not-italic">Functional design meets beauty. Their designs are always creative and aligned with our brand.</span>
                       </div>
                     </div>
@@ -200,7 +200,7 @@ export function SocialProof() {
                     {/* Footer: avatar + client info + small chat bubble */}
                     <div className="mt-4 flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
-                        <img src="/placeholder-user.jpg" alt={c.title + ' client'} className="h-10 w-10 rounded-full object-cover" />
+                        <img src="/placeholder-user.jpg" alt={c.title + ' client'} className="h-10 w-10 rounded-full object-cover doodle-avatar" />
                         <div>
                           <div className="font-semibold text-sm text-foreground">AI Meeting Recorder</div>
                           <div className="text-xs text-muted-foreground">Landing Page Design</div>
@@ -210,7 +210,7 @@ export function SocialProof() {
                       <div className="hidden sm:flex items-center">
                         <div className="rounded-2xl bg-black text-white px-4 py-2 text-sm shadow-md flex items-center gap-3">
                           <span>Thank you tl;dv</span>
-                          <span className="text-xs text-muted-foreground/70">digito</span>
+                          <span className="text-xs text-muted-foreground/70">client</span>
                         </div>
                       </div>
                     </div>
@@ -329,11 +329,23 @@ export function SocialProof() {
               .eye-btn:hover svg { transform: scale(1.08) rotate(-6deg); }
               .eye-btn:hover::after { opacity: 1; transform: scale(1); }
 
-              /* prefer-reduced-motion respect */
-              @media (prefers-reduced-motion: reduce) {
-                .eye-btn, .eye-btn svg, .eye-btn::after { transition: none !important; transform: none !important; }
+              /* doodly interactions: animate on hover only (no continuous animation) */
+              .doodle-anim, .doodle-avatar, .doodle-chat {
+                transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms ease, background-color 260ms ease, color 260ms ease;
+                transform-origin: center;
               }
-            `}</style>
+
+              /* hover-driven micro-interactions */
+              .doodle-anim:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(16,24,40,0.06); background-color: rgba(0,0,0,0.95); color: #fff; }
+              .doodle-anim:hover .not-italic { color: inherit; }
+              .doodle-avatar:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 30px rgba(16,24,40,0.06); }
+              .doodle-chat:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(16,24,40,0.08); }
+
+               /* respect prefers-reduced-motion */
+               @media (prefers-reduced-motion: reduce) {
+                .doodle-anim, .doodle-avatar, .doodle-chat { transition: none !important; transform: none !important; }
+               }
+             `}</style>
           </div>
         </div>
       </div>
@@ -384,4 +396,9 @@ const caseStudies = [
   { title: "Enterprise Admin Suite", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
   { title: "Onboarding Flow Optimization", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
   { title: "Video Content Platform", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "E-commerce Checkout Flow", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Social Media Dashboard", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Data Analytics Platform", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Customer Feedback Portal", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Project Management Tool", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
 ]
