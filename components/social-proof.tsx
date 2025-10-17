@@ -61,6 +61,7 @@ export function SocialProof() {
   const sliderRef = useRef<HTMLDivElement | null>(null)
   const isDownRef = useRef(false)
   const startXRef = useRef(0)
+  const startYRef = useRef(0)
   const scrollLeftRef = useRef(0)
 
   const onMouseDown = (e: React.MouseEvent) => {
@@ -93,16 +94,65 @@ export function SocialProof() {
 
   const onTouchStart = (e: React.TouchEvent) => {
     if (!sliderRef.current) return
+    // capture initial touch X and Y to determine gesture direction
     isDownRef.current = true
     startXRef.current = e.touches[0].pageX - sliderRef.current.offsetLeft
+    startYRef.current = e.touches[0].pageY
     scrollLeftRef.current = sliderRef.current.scrollLeft
   }
 
   const onTouchMove = (e: React.TouchEvent) => {
-    if (!isDownRef.current || !sliderRef.current) return
+    if (!sliderRef.current) return
+
     const x = e.touches[0].pageX - sliderRef.current.offsetLeft
-    const walk = (x - startXRef.current) * 1
-    sliderRef.current.scrollLeft = scrollLeftRef.current - walk
+    const y = e.touches[0].pageY
+    const dx = x - startXRef.current
+    const dy = y - startYRef.current
+
+    // If the user is performing a predominantly horizontal gesture, prevent the page
+    // from vertically scrolling and handle the carousel swipe. If it's vertical, allow
+    // the browser to handle the scroll (do not preventDefault).
+    if (Math.abs(dx) > Math.abs(dy)) {
+      // horizontal gesture -> handle carousel
+      if (!isDownRef.current) isDownRef.current = true
+      e.preventDefault()
+      const walk = dx * 1
+      sliderRef.current.scrollLeft = scrollLeftRef.current - walk
+    } else {
+      // vertical gesture -> let the page scroll normally
+      isDownRef.current = false
+    }
+  }
+
+  // Wrapper to block touch swiping on mobile devices so cards remain fixed and
+  // can only be moved programmatically via the buttons.
+  const onTouchMoveWrapper = (e: React.TouchEvent) => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      // On small screens, prevent touch-based horizontal swiping
+      e.preventDefault()
+      return
+    }
+    // Otherwise, use the normal touch move handler
+    onTouchMoveInternal(e)
+  }
+
+  // Rename original handler for internal use
+  const onTouchMoveInternal = (e: React.TouchEvent) => {
+    if (!sliderRef.current) return
+
+    const x = e.touches[0].pageX - sliderRef.current.offsetLeft
+    const y = e.touches[0].pageY
+    const dx = x - startXRef.current
+    const dy = y - startYRef.current
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+      if (!isDownRef.current) isDownRef.current = true
+      e.preventDefault()
+      const walk = dx * 1
+      sliderRef.current.scrollLeft = scrollLeftRef.current - walk
+    } else {
+      isDownRef.current = false
+    }
   }
 
   const onTouchEnd = () => {
@@ -162,13 +212,15 @@ export function SocialProof() {
 
             <div
               ref={sliderRef}
+              // Prevent manual finger swiping on mobile; still allow programmatic scroll via buttons.
               className="carousel flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth py-2 px-0 sm:px-2 md:px-10"
+              onWheel={(e) => e.preventDefault()}
               onMouseDown={onMouseDown}
               onMouseLeave={onMouseLeave}
               onMouseUp={onMouseUp}
               onMouseMove={onMouseMove}
               onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
+              onTouchMove={onTouchMoveWrapper}
               onTouchEnd={onTouchEnd}
             >
               {caseStudies.map((c, index) => (
@@ -259,7 +311,7 @@ export function SocialProof() {
             </div>
 
             <style jsx>{`
-              .carousel { scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; touch-action: pan-x; }
+              .carousel { scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
               .carousel::-webkit-scrollbar { display: none; }
               .carousel.dragging { cursor: grabbing; cursor: -webkit-grabbing; }
 
@@ -337,6 +389,8 @@ export function SocialProof() {
               @media (max-width: 767px) {
                 .carousel > article::before { inset: 6px; border-radius: 10px; }
                 .carousel > article > div:first-child::before { right: 12px; top: 12px; width: 64px; height: 64px; }
+                /* Disable manual horizontal scrolling on small screens */
+                .carousel { overflow-x: hidden; }
               }
 
               /* modal animation for lightbox */
