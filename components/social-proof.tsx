@@ -174,7 +174,7 @@ export function SocialProof() {
               {caseStudies.map((c, index) => (
                 <article
                   key={c.title}
-                  className="snap-start flex-shrink-0 w-[min(300px,85vw)] sm:w-[min(340px,70vw)] md:w-[32%] bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-border/50"
+                  className="snap-start flex-shrink-0 w-[min(420px,95vw)] sm:w-[min(560px,90vw)] md:w-[44%] lg:w-[40%] bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-border/50"
                   style={{
                     transitionDelay: isVisible ? `${index * 80}ms` : "0ms",
                     opacity: isVisible ? 1 : 0,
@@ -184,24 +184,36 @@ export function SocialProof() {
                     transitionTimingFunction: "cubic-bezier(.2,.9,.2,1)",
                   }}
                 >
-                  <div className="h-40 sm:h-48 w-full relative">
-                    <Image src={c.image || "/placeholder.svg"} alt={c.title} fill className="object-cover" />
+                  <div className="h-56 sm:h-72 md:h-80 lg:h-96 w-full relative rounded-t-lg overflow-hidden">
+                    <Image src={c.image || "/placeholder.svg"} alt={c.title} fill className="object-cover rounded-t-lg" />
                   </div>
                   <div className="p-4 sm:p-6">
                     <h3 className="text-base sm:text-lg font-semibold mb-2 line-clamp-2">{c.title}</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2">
-                      {c.description}
-                    </p>
-                    <button
-                      onClick={() => openLightbox(c.image)}
-                      aria-label={`View ${c.title}`}
-                      className="inline-flex items-center text-xs sm:text-sm font-medium text-primary hover:underline transition-colors p-1"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                    </button>
+
+                    {/* Client review bubble */}
+                    <div className="mt-3">
+                      <div className="rounded-2xl bg-muted-foreground/6 p-4 text-sm text-foreground leading-relaxed shadow-sm">
+                        <span className="not-italic">Functional design meets beauty. Their designs are always creative and aligned with our brand.</span>
+                      </div>
+                    </div>
+
+                    {/* Footer: avatar + client info + small chat bubble */}
+                    <div className="mt-4 flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <img src="/placeholder-user.jpg" alt={c.title + ' client'} className="h-10 w-10 rounded-full object-cover" />
+                        <div>
+                          <div className="font-semibold text-sm text-foreground">AI Meeting Recorder</div>
+                          <div className="text-xs text-muted-foreground">Landing Page Design</div>
+                        </div>
+                      </div>
+
+                      <div className="hidden sm:flex items-center">
+                        <div className="rounded-2xl bg-black text-white px-4 py-2 text-sm shadow-md flex items-center gap-3">
+                          <span>Thank you tl;dv</span>
+                          <span className="text-xs text-muted-foreground/70">digito</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -308,6 +320,19 @@ export function SocialProof() {
               /* modal animation for lightbox */
               .modal-enter { animation: modal-in 320ms cubic-bezier(.2,.9,.2,1) forwards; transform-origin: center; }
               @keyframes modal-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+
+              /* minimal sleek hover for eye button */
+              .eye-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease; }
+              .eye-btn svg { transition: transform 220ms cubic-bezier(.2,.9,.2,1); }
+              .eye-btn::after { content: ''; position: absolute; inset: 0; border-radius: 8px; box-shadow: 0 10px 30px rgba(59,130,246,0.06); opacity: 0; transform: scale(0.96); transition: opacity 220ms ease, transform 220ms cubic-bezier(.2,.9,.2,1); pointer-events: none; }
+              .eye-btn:hover { transform: translateY(-3px) scale(1.03); }
+              .eye-btn:hover svg { transform: scale(1.08) rotate(-6deg); }
+              .eye-btn:hover::after { opacity: 1; transform: scale(1); }
+
+              /* prefer-reduced-motion respect */
+              @media (prefers-reduced-motion: reduce) {
+                .eye-btn, .eye-btn svg, .eye-btn::after { transition: none !important; transform: none !important; }
+              }
             `}</style>
           </div>
         </div>
@@ -350,41 +375,13 @@ export function SocialProof() {
   )
 }
 
-// Case studies data
+// Case studies data (descriptions removed)
 const caseStudies = [
-  {
-    title: "ProHub Dashboard Redesign",
-    image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg",
-    description: "A conversion-focused redesign improving onboarding and retention.",
-  },
-  {
-    title: "Marketing Site Refresh",
-    image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg",
-    description: "Performance and accessibility driven rebuild for higher engagement.",
-  },
-  {
-    title: "Motion Toolkit",
-    image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg",
-    description: "A library of animated components and templates for rapid production.",
-  },
-  {
-    title: "Brand System & Design Ops",
-    image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg",
-    description: "Built a scalable design system and component library to accelerate delivery.",
-  },
-  {
-    title: "Enterprise Admin Suite",
-    image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg",
-    description: "Complex permissions and reporting UI for enterprise customers.",
-  },
-  {
-    title: "Onboarding Flow Optimization",
-    image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg",
-    description: "A/B testing driven improvements that increased activation rates.",
-  },
-  {
-    title: "Video Content Platform",
-    image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg",
-    description: "End-to-end UX for publishing and analytics for creators.",
-  },
+  { title: "ProHub Dashboard Redesign", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Marketing Site Refresh", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Motion Toolkit", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Brand System & Design Ops", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Enterprise Admin Suite", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Onboarding Flow Optimization", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Video Content Platform", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
 ]
