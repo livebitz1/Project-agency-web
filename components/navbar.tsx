@@ -90,7 +90,7 @@ export function Navbar() {
               Sign In
             </Button>
 
-            <Button size="sm" className="rounded-full text-xs sm:text-sm px-4 sm:px-6" onClick={handleGetStarted}>
+            <Button size="sm" className="hidden md:inline-flex rounded-full text-xs sm:text-sm px-4 sm:px-6" onClick={handleGetStarted}>
               Get Started
             </Button>
           </div>
@@ -106,9 +106,17 @@ export function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden border-t border-border/30 py-4 space-y-3">
+        {/* Mobile Menu (animated) */}
+        <div
+          role="menu"
+          aria-hidden={!isOpen}
+          className={`md:hidden border-t border-border/30 overflow-hidden transform origin-top transition-all duration-300 ease-out ${
+            isOpen
+              ? "opacity-100 scale-100 translate-y-0 py-4"
+              : "opacity-0 scale-95 -translate-y-2 py-0 pointer-events-none"
+          }`}
+        >
+          <div className={`space-y-3 ${isOpen ? "px-4" : "px-4"}`}>
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -120,7 +128,7 @@ export function Navbar() {
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )
