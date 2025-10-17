@@ -8,6 +8,39 @@ import Image from "next/image"
 export function SocialProof() {
   const [isVisible, setIsVisible] = useState(false)
 
+  // Lightbox (image modal) state
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+
+  // Open lightbox with given image URL
+  function openLightbox(image?: string) {
+    setLightboxImage(image || null)
+    setLightboxOpen(true)
+  }
+
+  function closeLightbox() {
+    setLightboxOpen(false)
+    // delay clearing image to allow close animation (optional)
+    setTimeout(() => setLightboxImage(null), 300)
+  }
+
+  // Close on Escape and prevent body scroll when open
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") closeLightbox()
+    }
+    if (lightboxOpen) {
+      document.addEventListener("keydown", onKey)
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.removeEventListener("keydown", onKey)
+      document.body.style.overflow = ""
+    }
+  }, [lightboxOpen])
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -159,12 +192,16 @@ export function SocialProof() {
                     <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2">
                       {c.description}
                     </p>
-                    <a
-                      className="inline-flex items-center text-xs sm:text-sm font-medium text-primary hover:underline transition-colors"
-                      href="#"
+                    <button
+                      onClick={() => openLightbox(c.image)}
+                      aria-label={`View ${c.title}`}
+                      className="inline-flex items-center text-xs sm:text-sm font-medium text-primary hover:underline transition-colors p-1"
                     >
-                      View case
-                    </a>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    </button>
                   </div>
                 </article>
               ))}
@@ -267,10 +304,48 @@ export function SocialProof() {
                 .carousel > article::before { inset: 6px; border-radius: 10px; }
                 .carousel > article > div:first-child::before { right: 12px; top: 12px; width: 64px; height: 64px; }
               }
+
+              /* modal animation for lightbox */
+              .modal-enter { animation: modal-in 320ms cubic-bezier(.2,.9,.2,1) forwards; transform-origin: center; }
+              @keyframes modal-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
             `}</style>
           </div>
         </div>
       </div>
+
+      {/* Lightbox modal */}
+      {lightboxOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          onClick={(e) => {
+            // close when clicking on overlay only
+            if (e.target === e.currentTarget) closeLightbox()
+          }}
+        >
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300" />
+
+          <div className="relative z-10 max-w-[90vw] max-h-[90vh] p-4">
+            <div className="rounded-lg overflow-hidden bg-black/0 shadow-xl transform modal-enter">
+              <button
+                onClick={closeLightbox}
+                aria-label="Close image"
+                className="absolute right-2 top-2 z-20 inline-flex items-center justify-center h-9 w-9 rounded-full bg-background/80 text-foreground hover:bg-background/95 border border-border"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {lightboxImage ? (
+                // plain <img> to avoid next/image domain config issues
+                <img src={lightboxImage} alt="Case image" className="block max-h-[80vh] w-auto min-w-0 object-contain" />
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

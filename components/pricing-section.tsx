@@ -8,30 +8,20 @@ export function PricingSection() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-background via-background to-background/95 py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section id="pricing" className="relative w-full bg-gradient-to-b from-background via-background to-background/95 py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16 md:mb-20">
-          <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
-            <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-              <span className="text-xs sm:text-sm font-semibold text-primary">Transparent Pricing</span>
-            </div>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4 sm:mb-6 leading-tight">
-            Simple, predictable pricing
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            Pricing that scales with your growth
           </h2>
-
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Choose a plan that fits your team. No hidden fees, cancel anytime. Scale your business with confidence.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-stretch mt-8 sm:mt-10 md:mt-12">
           {/* Left Card - Retainer (Dark Theme) */}
           <div
             className="group relative rounded-2xl overflow-hidden transition-all duration-500 ease-out"
@@ -71,9 +61,10 @@ export function PricingSection() {
               <div className="mb-8 sm:mb-10">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-0">
                   <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Retainer</h3>
-                    <p className="text-sm text-white/60 leading-relaxed">
-                      Ideal for teams that need ongoing quick design support
+                    <h3 className="text-3xl font-extrabold text-white">Retainer</h3>
+                    <p className="text-sm text-white/70 mt-1">
+                      Dedicated monthly design capacity with fast turnarounds and a
+                      small, senior team focused on your roadmap.
                     </p>
                   </div>
 
@@ -88,15 +79,15 @@ export function PricingSection() {
               <div className="flex-1 mb-8 sm:mb-10">
                 <ul className="space-y-3 sm:space-y-4">
                   {[
-                    "1 Active request at a time",
-                    "2x Senior Designer",
-                    "Bi-weekly progress meetings",
-                    "Fast turnaround",
-                    "Daily 4 hours of work",
+                    "Single active request queue to focus on priority work",
+                    "Two senior designers assigned to your account",
+                    "Bi‑weekly progress syncs and roadmap alignment",
+                    "Rapid turnaround on requests",
+                    "Daily dedicated design hours (up to 4h/day)",
                   ].map((feature, index) => (
                     <li key={index} className="flex items-start gap-3 text-sm sm:text-base text-white/80 group/item">
                       <div className="flex-shrink-0 mt-0.5">
-                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 group-hover/item:bg-white/20 transition-colors duration-300">
+                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 group-hover:item:bg-white/20 transition-colors duration-300">
                           <Check className="w-3 h-3 text-white" strokeWidth={3} />
                         </div>
                       </div>
@@ -155,9 +146,10 @@ export function PricingSection() {
               <div className="mb-8 sm:mb-10">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-0">
                   <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Landing Page Design</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      Bring your dream website to life in just days, not months.
+                    <h3 className="text-2xl font-extrabold text-foreground">Landing Page Design</h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Conversion-focused landing pages delivered quickly with full
+                      design and developer-ready handoff.
                     </p>
                   </div>
 
@@ -172,18 +164,18 @@ export function PricingSection() {
               <div className="flex-1 mb-8 sm:mb-10">
                 <ul className="space-y-3 sm:space-y-4">
                   {[
-                    "Wireframes",
-                    "Custom Layout",
-                    "Desktop, Tablet, Mobile responsive design",
-                    "Brand consistency",
-                    "Figma file + handoff",
+                    "Wireframes & interactive prototypes",
+                    "Custom responsive layout",
+                    "Desktop, tablet and mobile optimization",
+                    "Brand-consistent visual design",
+                    "Figma deliverables and developer handoff",
                   ].map((feature, index) => (
                     <li
                       key={index}
                       className="flex items-start gap-3 text-sm sm:text-base text-foreground/80 group/item"
                     >
                       <div className="flex-shrink-0 mt-0.5">
-                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-black/8 group-hover/item:bg-black/12 transition-colors duration-300">
+                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-black/8 group-hover:item:bg-black/12 transition-colors duration-300">
                           <Check className="w-3 h-3 text-foreground" strokeWidth={3} />
                         </div>
                       </div>

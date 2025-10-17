@@ -77,29 +77,14 @@ export function ValueSection() {
                     />
                   </div>
 
-                  {/* Animated SVG border overlay (responsive) */}
-                  <svg
-                    className="pointer-events-none absolute inset-0 w-full h-full"
-                    viewBox="0 0 1800 1100"
-                    preserveAspectRatio="none"
-                    aria-hidden
-                  >
-                    {/* subtle outer glow */}
-                    <rect x="8" y="8" width="1784" height="1084" rx="20" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
-
-                    {/* static glossy path - dashed (animation removed) */}
-                    <rect x="12" y="12" width="1776" height="1076" rx="18" fill="none" stroke="rgba(0,0,0,0.9)" strokeWidth="4" strokeDasharray="50 350" />
-
-                    {/* subtle static highlight */}
-                    <rect x="12" y="12" width="1776" height="1076" rx="18" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="2" strokeDasharray="10 600" />
-                  </svg>
+                  {/* SVG border overlay removed to keep image border clean */}
                 </div>
 
                 {/* 3D shadow & float animation styles (scoped) - persistent shadow (no hover-only change) */}
                 <style jsx>{`
                   .card3d-wrap { position: relative; display: block; border-radius: 14px; transform-origin: center; }
                   /* add a simple 10px border around the image container */
-                  .card-inner { border-radius: 14px; overflow: hidden; border: 10px solid rgba(0,0,0,0.9); }
+                  .card-inner { border-radius: 14px; overflow: hidden; border: none; }
                   /* stronger shadow visible by default for a subtle 3D effect */
                   .card3d-wrap { box-shadow: 0 28px 60px rgba(0,0,0,0.12), 0 10px 24px rgba(0,0,0,0.06); transition: transform 300ms ease; }
                   /* hover animation removed as requested */
