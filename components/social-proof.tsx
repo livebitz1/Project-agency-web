@@ -236,6 +236,28 @@ export function SocialProof() {
               </svg>
             </button>
 
+            {/* End controls: persistent scroll buttons positioned at the end of the card area */}
+            <div className="end-controls absolute right-4 bottom-4 z-30 flex items-center gap-2 md:gap-3">
+              <button
+                aria-label="Scroll left"
+                onClick={() => scrollByWidth("left")}
+                className="end-btn h-10 w-10 rounded-full bg-background/90 border border-border/40 flex items-center justify-center hover:bg-background/95 transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                aria-label="Scroll right"
+                onClick={() => scrollByWidth("right")}
+                className="end-btn h-10 w-10 rounded-full bg-background/90 border border-border/40 flex items-center justify-center hover:bg-background/95 transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
             <style jsx>{`
               .carousel { scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; touch-action: pan-x; }
               .carousel::-webkit-scrollbar { display: none; }
@@ -343,9 +365,40 @@ export function SocialProof() {
 
                /* respect prefers-reduced-motion */
                @media (prefers-reduced-motion: reduce) {
-                .doodle-anim, .doodle-avatar, .doodle-chat { transition: none !important; transform: none !important; }
+                 .doodle-anim, .doodle-avatar, .doodle-chat { transition: none !important; transform: none !important; }
                }
-             `}</style>
+
+              /* end-controls: desktop -> anchored bottom-right; mobile -> centered below carousel */
+              .end-controls { position: absolute; right: 1rem; bottom: 1rem; display: flex; gap: .5rem; align-items: center; }
+
+              /* matte minimal black buttons */
+              .end-controls .end-btn {
+                background: #0b0c0d; /* flat dark matte */
+                color: #fff;
+                border: 1px solid rgba(255,255,255,0.03);
+                box-shadow: 0 6px 14px rgba(2,6,23,0.12);
+                height: 40px;
+                width: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px; /* slight rounding for a modern matte look */
+                transition: transform 180ms cubic-bezier(.2,.9,.2,1), box-shadow 180ms ease, opacity 140ms ease, background-color 180ms ease;
+              }
+
+              .end-controls .end-btn svg { stroke: #fff; color: #fff; }
+
+              .end-controls .end-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 22px rgba(2,6,23,0.18);
+                opacity: 0.99;
+              }
+
+              @media (max-width: 767px) {
+                .end-controls { position: static; justify-content: center; width: 100%; margin-top: 0.75rem; transform: none; }
+                .end-controls .end-btn { height: 44px; width: 44px; }
+              }
+            `}</style>
           </div>
         </div>
       </div>
