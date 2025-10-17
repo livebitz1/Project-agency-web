@@ -102,13 +102,30 @@ export function Navbar() {
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {/* Improved animated hamburger -> X: absolute-centered bars for better responsiveness */}
+            <span className="relative inline-block w-5 h-5">
+              <span
+                className={`absolute left-1/2 top-1/2 block h-0.5 w-5 bg-current transform transition duration-300 ease-in-out -translate-x-1/2 ${isOpen ? 'rotate-45' : '-translate-y-1.5'}`}
+                style={{ transformOrigin: 'center' }}
+              />
+              <span
+                className={`absolute left-1/2 top-1/2 block h-0.5 w-5 bg-current transform transition-opacity duration-200 -translate-x-1/2 ${isOpen ? 'opacity-0' : ''}`}
+              />
+              <span
+                className={`absolute left-1/2 top-1/2 block h-0.5 w-5 bg-current transform transition duration-300 ease-in-out -translate-x-1/2 ${isOpen ? '-rotate-45' : 'translate-y-1.5'}`}
+                style={{ transformOrigin: 'center' }}
+              />
+            </span>
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden border-t border-border/30 py-4 space-y-3">
+        {/* Mobile Menu: keep mounted but animate open/close for smooth transitions */}
+        <div
+          className={`md:hidden border-t border-border/30 overflow-hidden origin-top transform-gpu transition-[max-height,opacity,transform] duration-300 ease-in-out ${
+            isOpen ? 'max-h-60 opacity-100 scale-y-100 py-4' : 'max-h-0 opacity-0 scale-y-95 py-0'
+          }`}
+        >
+          <div className="space-y-3">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -120,7 +137,7 @@ export function Navbar() {
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )
