@@ -48,7 +48,7 @@ export function HeroSection() {
           >
             <Badge variant="secondary" className="gap-2 rounded-full px-4 py-1.5 text-xs font-medium border border-black/10">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              New: Advanced Analytics
+              Empowering Brands Digitally 
               <ArrowRight className="h-3 w-3" />
             </Badge>
           </div>

@@ -11,7 +11,6 @@ export function Navbar() {
   const router = useRouter()
 
   const navLinks = [
-    { label: "Product", href: "#product" },
     { label: "Features", href: "#features" },
     { label: "Projects", href: "#social-proof" },
     { label: "Analytics", href: "#our-analytics" },
