@@ -97,7 +97,7 @@ export function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
-            <Button size="lg" className="rounded-full px-8 font-medium cta-primary" aria-label="Get started with Digitomeida">
+            <Button size="lg" className="rounded-full px-8 font-medium cta-primary" aria-label="Get started with Digitomedia">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

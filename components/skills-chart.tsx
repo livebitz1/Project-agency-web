@@ -25,30 +25,39 @@ const clientBusinessImpactData = [
   { client: "SaaS Platform", beforeRevenue: 320, afterRevenue: 832, conversionBefore: 2.5, conversionAfter: 6.8 },
   { client: "FinTech", beforeRevenue: 550, afterRevenue: 1210, conversionBefore: 3.2, conversionAfter: 7.1 },
   { client: "Healthcare", beforeRevenue: 180, afterRevenue: 486, conversionBefore: 1.5, conversionAfter: 4.9 },
+  { client: "Marketplace", beforeRevenue: 410, afterRevenue: 980, conversionBefore: 2.0, conversionAfter: 5.1 },
+  { client: "EdTech", beforeRevenue: 140, afterRevenue: 392, conversionBefore: 1.3, conversionAfter: 3.6 },
+  { client: "Gaming", beforeRevenue: 300, afterRevenue: 720, conversionBefore: 1.9, conversionAfter: 4.7 },
 ]
 
 const monthlyProgressionData = [
-  { month: "M1", revenue: 250, engagement: 35, satisfaction: 72, leads: 45 },
-  { month: "M2", revenue: 310, engagement: 48, satisfaction: 78, leads: 62 },
-  { month: "M3", revenue: 385, engagement: 62, satisfaction: 82, leads: 78 },
-  { month: "M4", revenue: 475, engagement: 71, satisfaction: 86, leads: 95 },
-  { month: "M5", revenue: 565, engagement: 78, satisfaction: 89, leads: 112 },
-  { month: "M6", revenue: 625, engagement: 85, satisfaction: 92, leads: 138 },
+  { month: "Jan", revenue: 220, engagement: 30, satisfaction: 70, leads: 40 },
+  { month: "Feb", revenue: 255, engagement: 38, satisfaction: 73, leads: 55 },
+  { month: "Mar", revenue: 310, engagement: 46, satisfaction: 76, leads: 68 },
+  { month: "Apr", revenue: 375, engagement: 56, satisfaction: 79, leads: 82 },
+  { month: "May", revenue: 455, engagement: 65, satisfaction: 83, leads: 101 },
+  { month: "Jun", revenue: 525, engagement: 72, satisfaction: 86, leads: 125 },
+  { month: "Jul", revenue: 600, engagement: 78, satisfaction: 88, leads: 148 },
+  { month: "Aug", revenue: 680, engagement: 83, satisfaction: 90, leads: 170 },
+  { month: "Sep", revenue: 740, engagement: 87, satisfaction: 91, leads: 185 },
+  { month: "Oct", revenue: 820, engagement: 90, satisfaction: 92, leads: 205 },
+  { month: "Nov", revenue: 900, engagement: 92, satisfaction: 93, leads: 230 },
+  { month: "Dec", revenue: 980, engagement: 94, satisfaction: 94, leads: 260 },
 ]
 
 const industryDistribution = [
-  { name: "SaaS", value: 28, color: "#000000" },
-  { name: "E-Commerce", value: 22, color: "#4b5563" },
-  { name: "FinTech", value: 18, color: "#9ca3af" },
-  { name: "Healthcare", value: 16, color: "#d1d5db" },
-  { name: "Other", value: 16, color: "#e9e9e9" },
+  { name: "SaaS", value: 26, color: "#0f172a" },
+  { name: "E-Commerce", value: 24, color: "#0ea5a4" },
+  { name: "FinTech", value: 18, color: "#7c3aed" },
+  { name: "Healthcare", value: 16, color: "#ef4444" },
+  { name: "Other", value: 16, color: "#94a3b8" },
 ]
 
 const keyMetrics = [
   { label: "Avg Revenue Growth", value: "146%" },
   { label: "Avg Conversion Increase", value: "176%" },
-  { label: "Avg Customer Retention", value: "94.4%" },
-  { label: "Avg ROI", value: "334%" },
+   { label: "Projects Delivered On Time", value: "92%" },
+  { label: "Avg Time-to-Launch", value: "14 days" },
 ]
 
 export default function SkillsChart() {
@@ -104,7 +113,7 @@ export default function SkillsChart() {
             <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/60 bg-clip-text text-transparent">ANALYTICS</span>
           </h2>
-          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating Digitomeida’s impact across clients and projects.</p>
+          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating Digitomedia’s impact across clients and projects.</p>
         </div>
 
         <div className={`w-full space-y-6`}>
@@ -196,20 +205,30 @@ export default function SkillsChart() {
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Client Revenue Growth (in thousands $)</h3>
             <ChartContainer
               config={{
-                beforeRevenue: { label: "Before Digitomeida", color: "hsl(0,0%,80%)" },
-                afterRevenue: { label: "After Digitomeida", color: "hsl(0,0%,0%)" },
+                beforeRevenue: { label: "Before Digitomedia", color: "hsl(0,0%,80%)" },
+                afterRevenue: { label: "After Digitomedia", color: "hsl(0,0%,0%)" },
               }}
               className="h-56 sm:h-64 md:h-72 w-full transition-all duration-300"
             >
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={clientBusinessImpactData} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
+                  <defs>
+                    <linearGradient id="grad-beforeRevenue" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="rgba(99,102,241,0.9)" />
+                      <stop offset="100%" stopColor="rgba(99,102,241,0.15)" />
+                    </linearGradient>
+                    <linearGradient id="grad-afterRevenue" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="rgba(15,23,42,0.95)" />
+                      <stop offset="100%" stopColor="rgba(15,23,42,0.2)" />
+                    </linearGradient>
+                  </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(0,0%,90%)" vertical={false} />
                   <XAxis dataKey="client" stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} tick={{ dy: 3 }} />
                   <YAxis stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} width={25} />
                   <ChartTooltip content={<ChartTooltipContent />} cursor={{ fill: "hsl(0,0%,95%)" }} />
                   <Legend wrapperStyle={{ paddingTop: "10px", fontSize: "11px" }} iconType="square" height={25} />
-                  <Bar dataKey="beforeRevenue" fill="var(--color-beforeRevenue)" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="afterRevenue" fill="var(--color-afterRevenue)" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="beforeRevenue" fill="url(#grad-beforeRevenue)" radius={[6, 6, 2, 2]} barSize={18} />
+                  <Bar dataKey="afterRevenue" fill="url(#grad-afterRevenue)" radius={[6, 6, 2, 2]} barSize={18} />
                 </BarChart>
               </ResponsiveContainer>
             </ChartContainer>
@@ -230,25 +249,66 @@ export default function SkillsChart() {
           >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Conversion Rate Improvement (%)</h3>
             <ChartContainer
-              config={{ conversionBefore: { label: "Before Digitomeida", color: "hsl(0,0%,70%)" }, conversionAfter: { label: "After Digitomeida", color: "hsl(0,0%,0%)" } }}
+              config={{ conversionBefore: { label: "Before Digitomedia", color: "hsl(0,0%,70%)" }, conversionAfter: { label: "After Digitomedia", color: "hsl(0,0%,0%)" } }}
               className="h-56 sm:h-64 md:h-72 w-full transition-all duration-300"
             >
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={clientBusinessImpactData} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(0,0%,90%)" vertical={false} />
-                  <XAxis dataKey="client" stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} tick={{ dy: 3 }} />
-                  <YAxis stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} width={25} />
+                <LineChart data={clientBusinessImpactData} margin={{ top: 8, right: 8, left: -15, bottom: 6 }}>
+                  {/* Minimalist gradients and small area fill for a sleek look */}
+                  <defs>
+                    <linearGradient id="grad-conv-before" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="rgba(107,114,128,0.95)" />
+                      <stop offset="100%" stopColor="rgba(107,114,128,0.5)" />
+                    </linearGradient>
+                    <linearGradient id="grad-conv-after" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="rgba(15,23,42,0.95)" />
+                      <stop offset="100%" stopColor="rgba(15,23,42,0.6)" />
+                    </linearGradient>
+                    <linearGradient id="grad-conv-after-fill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="rgba(15,23,42,0.12)" />
+                      <stop offset="100%" stopColor="rgba(15,23,42,0.02)" />
+                    </linearGradient>
+                  </defs>
+
+                  <CartesianGrid stroke="#eef2f7" strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="client" stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} tick={{ dy: 3 }} axisLine={false} tickLine={false} />
+                  <YAxis stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} width={28} axisLine={false} tickLine={false} />
                   <ChartTooltip content={<ChartTooltipContent />} />
                   <Legend wrapperStyle={{ paddingTop: "10px", fontSize: "11px" }} height={25} />
-                  <Line type="monotone" dataKey="conversionBefore" stroke="hsl(0,0%,70%)" strokeWidth={2} dot={{ fill: "hsl(0,0%,70%)", r: 3 }} activeDot={{ r: 5 }} />
-                  <Line type="monotone" dataKey="conversionAfter" stroke="hsl(0,0%,0%)" strokeWidth={2} dot={{ fill: "hsl(0,0%,0%)", r: 3 }} activeDot={{ r: 5 }} />
+
+                  {/* Subtle filled area for the 'after' line to give depth without noise */}
+                  <defs />
+                  <Area type="monotone" dataKey="conversionAfter" fill="url(#grad-conv-after-fill)" stroke="none" isAnimationActive={false} />
+
+                  <Line
+                    type="monotone"
+                    dataKey="conversionBefore"
+                    stroke="url(#grad-conv-before)"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    dot={{ r: 2 }}
+                    activeDot={{ r: 5 }}
+                    animationDuration={500}
+                  />
+
+                  <Line
+                    type="monotone"
+                    dataKey="conversionAfter"
+                    stroke="url(#grad-conv-after)"
+                    strokeWidth={2.5}
+                    strokeLinecap="round"
+                    dot={{ r: 2 }}
+                    activeDot={{ r: 5 }}
+                    animationDuration={600}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </ChartContainer>
           </div>
 
           {/* Progression Chart */}
-          <div className={`${activeChart === "progression" ? "block" : "hidden"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}
+          <div
+            className={`${activeChart === "progression" ? "block" : "hidden"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50 will-change-transform`}
             style={{
               transitionProperty: 'opacity, transform, filter',
               transitionDuration: '720ms',
@@ -259,22 +319,65 @@ export default function SkillsChart() {
               filter: isVisible ? 'blur(0px)' : 'blur(6px)'
             }}
           >
-            <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">6-Month Growth Trajectory</h3>
+            <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Growth Trajectory</h3>
             <ChartContainer
               config={{ revenue: { label: "Revenue ($K)", color: "hsl(0,0%,0%)" }, engagement: { label: "Engagement (%)", color: "hsl(0,0%,50%)" } }}
               className="h-56 sm:h-64 md:h-72 w-full transition-all duration-300"
             >
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={monthlyProgressionData} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(0,0%,90%)" vertical={false} />
-                  <XAxis dataKey="month" stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} tick={{ dy: 3 }} />
-                  <YAxis stroke="hsl(0,0%,40%)" style={{ fontSize: "10px" }} width={25} />
+                <AreaChart data={monthlyProgressionData} margin={{ top: 8, right: 12, left: -12, bottom: 6 }}>
+                  {/* Minimalist grid and axis */}
+                  <defs>
+                    <linearGradient id="grad-prog-revenue" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="rgba(15,23,42,0.14)" />
+                      <stop offset="100%" stopColor="rgba(15,23,42,0.02)" />
+                    </linearGradient>
+                    <linearGradient id="grad-prog-engagement" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="rgba(99,102,241,0.12)" />
+                      <stop offset="100%" stopColor="rgba(99,102,241,0.02)" />
+                    </linearGradient>
+                  </defs>
+
+                  <CartesianGrid stroke="#f1f5f9" strokeDasharray="4 4" vertical={false} />
+                  <XAxis dataKey="month" stroke="hsl(0,0%,40%)" style={{ fontSize: "11px" }} tick={{ dy: 4 }} axisLine={false} tickLine={false} />
+                  <YAxis stroke="hsl(0,0%,40%)" style={{ fontSize: "11px" }} width={28} axisLine={false} tickLine={false} />
+
                   <ChartTooltip content={<ChartTooltipContent />} />
-                  <Legend wrapperStyle={{ paddingTop: "10px", fontSize: "11px" }} height={25} />
-                  <Area type="monotone" dataKey="revenue" fill="hsl(0,0%,90%)" stroke="hsl(0,0%,0%)" strokeWidth={2} />
-                  <Area type="monotone" dataKey="engagement" fill="hsl(0,0%,95%)" stroke="hsl(0,0%,50%)" strokeWidth={2} />
-                  <Area type="monotone" dataKey="satisfaction" fill="hsl(0,0%,98%)" stroke="hsl(0,0%,70%)" strokeWidth={2} />
-                  <Area type="monotone" dataKey="leads" fill="hsl(0,0%,97%)" stroke="hsl(0,0%,30%)" strokeWidth={2} />
+                  <Legend wrapperStyle={{ paddingTop: "8px", fontSize: "11px" }} height={28} />
+
+                  {/* Revenue: primary, slightly stronger stroke with soft fill */}
+                  <Area
+                    type="monotone"
+                    dataKey="revenue"
+                    stroke="hsl(0,0%,6%)"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    fill="url(#grad-prog-revenue)"
+                    dot={{ r: 3, strokeWidth: 0, fill: 'hsl(0,0%,6%)' }}
+                    activeDot={{ r: 5 }}
+                    isAnimationActive={true}
+                    animationDuration={700}
+                    connectNulls
+                  />
+
+                  {/* Engagement: accent with lighter stroke and subtle fill */}
+                  <Area
+                    type="monotone"
+                    dataKey="engagement"
+                    stroke="rgba(99,102,241,0.95)"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    fill="url(#grad-prog-engagement)"
+                    dot={{ r: 2.5, strokeWidth: 0, fill: 'rgba(99,102,241,0.95)' }}
+                    activeDot={{ r: 5 }}
+                    isAnimationActive={true}
+                    animationDuration={700}
+                    connectNulls
+                  />
+
+                  {/* Optional lighter metrics kept but de-emphasized */}
+                  <Area type="monotone" dataKey="satisfaction" fill="rgba(15,23,42,0.03)" stroke="rgba(15,23,42,0.18)" strokeWidth={1.5} dot={false} isAnimationActive={false} />
+                  <Area type="monotone" dataKey="leads" fill="rgba(99,102,241,0.02)" stroke="rgba(99,102,241,0.12)" strokeWidth={1.5} dot={false} isAnimationActive={false} />
                 </AreaChart>
               </ResponsiveContainer>
             </ChartContainer>

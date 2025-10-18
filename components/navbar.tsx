@@ -63,7 +63,7 @@ export function Navbar() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <Sparkles className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="hidden font-bold text-foreground sm:inline text-sm">Digitomeida</span>
+            <span className="hidden font-bold text-foreground sm:inline text-sm">Digitomedia</span>
           </div>
 
           {/* Navigation Links - Hidden on mobile */}
