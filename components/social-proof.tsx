@@ -291,7 +291,7 @@ export function SocialProof() {
             </button>
 
             {/* End controls: persistent scroll buttons positioned at the end of the card area */}
-            <div className="end-controls absolute right-4 bottom-4 z-30 flex items-center gap-2 md:gap-3">
+            <div className="end-controls md:hidden absolute right-4 bottom-4 z-30 flex items-center gap-2 md:gap-3">
               <button
                 aria-label="Scroll left"
                 onClick={() => scrollByWidth("left")}
@@ -425,7 +425,8 @@ export function SocialProof() {
                }
 
               /* end-controls: desktop -> anchored bottom-right; mobile -> centered below carousel */
-              .end-controls { position: absolute; right: 1rem; bottom: 1rem; display: flex; gap: .5rem; align-items: center; }
+              /* hide by default (desktop). show only on small screens via media query to avoid CSS specificity clashes */
+              .end-controls { position: absolute; right: 1rem; bottom: 1rem; display: none; gap: .5rem; align-items: center; }
 
               /* matte minimal black buttons */
               .end-controls .end-btn {
@@ -451,7 +452,7 @@ export function SocialProof() {
               }
 
               @media (max-width: 767px) {
-                .end-controls { position: static; justify-content: center; width: 100%; margin-top: 0.75rem; transform: none; }
+                .end-controls { display: flex; position: static; justify-content: center; width: 100%; margin-top: 0.75rem; transform: none; }
                 .end-controls .end-btn { height: 44px; width: 44px; }
               }
             `}</style>

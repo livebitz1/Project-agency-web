@@ -14,7 +14,6 @@ export default function Home() {
       <main className="relative overflow-hidden">
         <HeroSection />
         <SocialProof />
-        <PricingSection />
 
         {/* Divider */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -24,6 +23,8 @@ export default function Home() {
         <ValueSection />
         {/* OUR SKILLS section (charts) */}
         <SkillsChart />
+        {/* Pricing section moved to follow OUR SKILLS as requested */}
+        <PricingSection />
         <CTASection />
       </main>
       <Footer />

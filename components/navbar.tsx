@@ -14,6 +14,7 @@ export function Navbar() {
     { label: "Product", href: "#product" },
     { label: "Features", href: "#features" },
     { label: "Projects", href: "#social-proof" },
+    { label: "Skills", href: "#our-skills" },
     { label: "Pricing", href: "#pricing" },
   ]
 

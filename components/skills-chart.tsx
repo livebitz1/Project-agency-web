@@ -56,6 +56,7 @@ export default function SkillsChart() {
   const [hoveredMetric, setHoveredMetric] = useState<number | null>(null)
   const [isClient, setIsClient] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     setIsClient(true)
@@ -63,6 +64,33 @@ export default function SkillsChart() {
     update()
     window.addEventListener("resize", update)
     return () => window.removeEventListener("resize", update)
+  }, [])
+
+  // Reveal animation when the section scrolls into view
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    // respect reduced motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) {
+      setIsVisible(true)
+      return
+    }
+
+    const el = document.getElementById('our-skills')
+    if (!el) {
+      setIsVisible(true)
+      return
+    }
+
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true)
+        obs.disconnect()
+      }
+    }, { threshold: 0.12 })
+
+    obs.observe(el)
+    return () => obs.disconnect()
   }, [])
 
   return (
@@ -79,18 +107,27 @@ export default function SkillsChart() {
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating ProHub’s impact across clients and projects.</p>
         </div>
 
-        <div className="w-full space-y-6">
+        <div className={`w-full space-y-6`}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
             {keyMetrics.map((metric, i) => (
               <div
                 key={i}
                 onMouseEnter={() => setHoveredMetric(i)}
                 onMouseLeave={() => setHoveredMetric(null)}
-                className={`group rounded-lg p-3 md:p-4 border border-gray-200 text-center transition-all duration-300 cursor-pointer transform ${
+                // premium staggered reveal: combined opacity, transform and subtle blur removal
+                style={{
+                  transitionProperty: 'opacity, transform, filter',
+                  transitionDuration: '720ms',
+                  transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+                  transitionDelay: isVisible ? `${i * 110 + 120}ms` : '0ms',
+                  transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(10px) scale(.996)',
+                  filter: isVisible ? 'blur(0px)' : 'blur(6px)',
+                }}
+                className={`group rounded-lg p-3 md:p-4 border border-gray-200 text-center transition-all duration-700 will-change-transform ${
                   hoveredMetric === i
-                    ? "bg-black text-white border-black shadow-lg scale-105"
-                    : "bg-gray-50 hover:shadow-md hover:border-gray-300 hover:bg-black hover:text-white hover:scale-105"
-                }`}
+                    ? 'bg-black text-white border-black shadow-lg scale-105'
+                    : 'bg-gray-50 hover:shadow-md hover:border-gray-300 hover:bg-black hover:text-white hover:scale-105'
+                } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'}`}
               >
                 <p className={`text-xs md:text-sm mb-1 transition-colors ${hoveredMetric === i ? 'text-gray-200' : 'text-gray-600'} group-hover:text-white`}>
                   {metric.label}
@@ -124,7 +161,18 @@ export default function SkillsChart() {
           </div>
 
           {/* Revenue Growth Chart */}
-          <div className={`${activeChart === "revenue" ? "block" : "hidden md:block"} transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}>
+          <div
+            className={`${activeChart === "revenue" ? "block" : "hidden md:block"} transition-all duration-700 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50 will-change-transform`}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '720ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transitionDelay: isVisible ? '360ms' : '0ms',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(14px) scale(0.995)',
+              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+            }}
+          >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Client Revenue Growth (in thousands $)</h3>
             <ChartContainer
               config={{
@@ -148,7 +196,18 @@ export default function SkillsChart() {
           </div>
 
           {/* Conversion Chart */}
-          <div className={`${activeChart === "conversion" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}>
+          <div
+            className={`${activeChart === "conversion" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-700 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50 will-change-transform`}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '720ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transitionDelay: isVisible ? '500ms' : '0ms',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.994)',
+              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+            }}
+          >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Conversion Rate Improvement (%)</h3>
             <ChartContainer
               config={{ conversionBefore: { label: "Before ProHub", color: "hsl(0,0%,70%)" }, conversionAfter: { label: "After ProHub", color: "hsl(0,0%,0%)" } }}
@@ -169,7 +228,17 @@ export default function SkillsChart() {
           </div>
 
           {/* Progression Chart */}
-          <div className={`${activeChart === "progression" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}>
+          <div className={`${activeChart === "progression" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '720ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transitionDelay: isVisible ? '660ms' : '0ms',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(18px) scale(0.993)',
+              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+            }}
+          >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">6-Month Growth Trajectory</h3>
             <ChartContainer
               config={{ revenue: { label: "Revenue ($K)", color: "hsl(0,0%,0%)" }, engagement: { label: "Engagement (%)", color: "hsl(0,0%,50%)" } }}
@@ -192,7 +261,17 @@ export default function SkillsChart() {
           </div>
 
           {/* Industry Pie */}
-          <div className={`${activeChart === "industry" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}>
+          <div className={`${activeChart === "industry" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '720ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transitionDelay: isVisible ? '800ms' : '0ms',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.992)',
+              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+            }}
+          >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Client Distribution by Industry</h3>
             <ChartContainer config={{}} className="h-56 sm:h-64 md:h-72 w-full flex items-center justify-center transition-all duration-300">
               <ResponsiveContainer width="100%" height="100%">
