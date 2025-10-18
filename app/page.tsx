@@ -5,6 +5,7 @@ import { ValueSection } from "@/components/value-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { PricingSection } from "@/components/pricing-section"
+import SkillsChart from "@/components/skills-chart"
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
         </div>
 
         <ValueSection />
+        {/* OUR SKILLS section (charts) */}
+        <SkillsChart />
         <CTASection />
       </main>
       <Footer />

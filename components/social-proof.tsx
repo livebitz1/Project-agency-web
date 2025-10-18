@@ -182,6 +182,8 @@ export function SocialProof() {
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
               <span className="text-foreground">Showcase</span>
+              {/* show a space on mobile, keep line-break on sm+ */}
+              <span className="sm:hidden">&nbsp;</span>
               <br className="hidden sm:block" />
               <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/60 bg-clip-text text-transparent">
                 Past Work
@@ -409,7 +411,7 @@ export function SocialProof() {
               .doodle-anim, .doodle-avatar, .doodle-chat {
                 transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms ease, background-color 260ms ease, color 260ms ease;
                 transform-origin: center;
-              }
+              } 
 
               /* hover-driven micro-interactions */
               .doodle-anim:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(16,24,40,0.06); background-color: rgba(0,0,0,0.95); color: #fff; }
