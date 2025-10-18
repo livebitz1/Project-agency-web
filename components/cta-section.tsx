@@ -43,7 +43,7 @@ export function CTASection() {
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <Button size="lg" className="rounded-full px-8 font-medium">
-                Start Free Trial
+               Book Now
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-full px-8 font-medium bg-transparent">

@@ -76,7 +76,7 @@ export default function SkillsChart() {
       return
     }
 
-    const el = document.getElementById('our-skills')
+    const el = document.getElementById('our-analytics')
     if (!el) {
       setIsVisible(true)
       return
@@ -94,7 +94,7 @@ export default function SkillsChart() {
   }, [])
 
   return (
-    <section id="our-skills" className="py-16 sm:py-20 lg:py-24">
+    <section id="our-analytics" className="py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
@@ -102,7 +102,7 @@ export default function SkillsChart() {
             {/* show a space on mobile, keep line-break on sm+ */}
             <span className="sm:hidden">&nbsp;</span>
             <br className="hidden sm:block" />
-            <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/60 bg-clip-text text-transparent">SKILLS</span>
+            <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/60 bg-clip-text text-transparent">ANALYTICS</span>
           </h2>
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating Digitomeida’s impact across clients and projects.</p>
         </div>
@@ -139,39 +139,59 @@ export default function SkillsChart() {
             ))}
           </div>
 
-          <div className="flex gap-2 md:hidden mb-4 flex-wrap">
-            {[
-              { id: "revenue", label: "Revenue" },
-              { id: "conversion", label: "Conversion" },
-              { id: "progression", label: "Growth" },
-              { id: "industry", label: "Industry" },
-            ].map((btn) => (
-              <button
-                key={btn.id}
-                onClick={() => setActiveChart(btn.id as any)}
-                className={`flex-1 min-w-[45%] py-2 px-2 text-xs font-medium rounded transition-all duration-300 ${
-                  activeChart === btn.id
-                    ? "bg-black text-white shadow-md scale-105 transform"
-                    : "bg-gray-100 text-black hover:bg-gray-200 hover:shadow-sm"
-                }`}
-              >
-                {btn.label}
-              </button>
-            ))}
+          {/* Chart controls: mobile (stacked) and desktop (single control bar) */}
+          <div className="mb-4">
+            {/* Mobile controls: compact stacked buttons */}
+            <div className="flex gap-2 md:hidden mb-4 flex-wrap">
+              {[
+                { id: "revenue", label: "Revenue" },
+                { id: "conversion", label: "Conversion" },
+                { id: "progression", label: "Growth" },
+                { id: "industry", label: "Industry" },
+              ].map((btn) => (
+                <button
+                  key={btn.id}
+                  onClick={() => setActiveChart(btn.id as any)}
+                  aria-pressed={activeChart === btn.id}
+                  className={`flex-1 min-w-[45%] py-2 px-2 text-xs font-medium rounded transition-all duration-200 ${
+                    activeChart === btn.id
+                      ? "bg-black text-white shadow-sm"
+                      : "bg-gray-100 text-black hover:bg-gray-200"
+                  }`}
+                >
+                  {btn.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Desktop controls: sleek minimal pill bar */}
+            <div className="hidden md:flex items-center justify-center gap-3">
+              {[
+                { id: "revenue", label: "Revenue" },
+                { id: "conversion", label: "Conversion" },
+                { id: "progression", label: "Growth" },
+                { id: "industry", label: "Industry" },
+              ].map((btn) => (
+                <button
+                  key={btn.id}
+                  onClick={() => setActiveChart(btn.id as any)}
+                  aria-pressed={activeChart === btn.id}
+                  className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-240 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40 ${
+                    activeChart === btn.id
+                      ? 'bg-foreground text-background shadow-md'
+                      : 'bg-transparent text-muted-foreground border border-border/60 hover:bg-muted-foreground/6'
+                  }`}
+                >
+                  {btn.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Revenue Growth Chart */}
           <div
-            className={`${activeChart === "revenue" ? "block" : "hidden md:block"} transition-all duration-700 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50 will-change-transform`}
-            style={{
-              transitionProperty: 'opacity, transform, filter',
-              transitionDuration: '720ms',
-              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
-              transitionDelay: isVisible ? '360ms' : '0ms',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(14px) scale(0.995)',
-              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
-            }}
+            className={`${activeChart === "revenue" ? "block" : "hidden"} transition-all duration-700 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50 will-change-transform`}
+            style={{ transitionDelay: isVisible ? '320ms' : '0ms', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.996)' }}
           >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Client Revenue Growth (in thousands $)</h3>
             <ChartContainer
@@ -197,7 +217,7 @@ export default function SkillsChart() {
 
           {/* Conversion Chart */}
           <div
-            className={`${activeChart === "conversion" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-700 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50 will-change-transform`}
+            className={`${activeChart === "conversion" ? "block" : "hidden"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-700 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50 will-change-transform`}
             style={{
               transitionProperty: 'opacity, transform, filter',
               transitionDuration: '720ms',
@@ -228,7 +248,7 @@ export default function SkillsChart() {
           </div>
 
           {/* Progression Chart */}
-          <div className={`${activeChart === "progression" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}
+          <div className={`${activeChart === "progression" ? "block" : "hidden"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}
             style={{
               transitionProperty: 'opacity, transform, filter',
               transitionDuration: '720ms',
@@ -261,7 +281,7 @@ export default function SkillsChart() {
           </div>
 
           {/* Industry Pie */}
-          <div className={`${activeChart === "industry" ? "block" : "hidden md:block"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}
+          <div className={`${activeChart === "industry" ? "block" : "hidden"} md:pt-4 md:border-t md:border-gray-200 transition-all duration-300 hover:shadow-lg rounded-lg p-4 hover:bg-gray-50`}
             style={{
               transitionProperty: 'opacity, transform, filter',
               transitionDuration: '720ms',
