@@ -499,7 +499,7 @@ export function SocialProof() {
 
 // Case studies data (descriptions removed)
 const caseStudies = [
-  { title: "ProHub Dashboard Redesign", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  { title: "Digitomeida Dashboard Redesign", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
   { title: "Marketing Site Refresh", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
   { title: "Motion Toolkit", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
   { title: "Brand System & Design Ops", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },

@@ -33,7 +33,7 @@ export function Footer() {
         {/* Enhanced footer layout: brand, newsletter, socials */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mb-8">
           <div>
-            <h4 className="text-lg font-semibold text-foreground mb-2">ProHub</h4>
+            <h4 className="text-lg font-semibold text-foreground mb-2">Digitomeida</h4>
             <p className="text-sm text-muted-foreground max-w-sm">We build products that scale — design, engineering and product thinking for teams that ship.</p>
           </div>
 
@@ -85,7 +85,7 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4">
-          <p className="text-xs sm:text-sm text-muted-foreground">© 2025 ProHub. All rights reserved.</p>
+          <p className="text-xs sm:text-sm text-muted-foreground">© 2025 Digitomeida. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <span className="text-xs sm:text-sm text-muted-foreground">Privacy</span>
             <span className="text-xs sm:text-sm text-muted-foreground">Terms</span>

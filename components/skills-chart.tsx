@@ -104,7 +104,7 @@ export default function SkillsChart() {
             <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/60 bg-clip-text text-transparent">SKILLS</span>
           </h2>
-          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating ProHub’s impact across clients and projects.</p>
+          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating Digitomeida’s impact across clients and projects.</p>
         </div>
 
         <div className={`w-full space-y-6`}>
@@ -176,8 +176,8 @@ export default function SkillsChart() {
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Client Revenue Growth (in thousands $)</h3>
             <ChartContainer
               config={{
-                beforeRevenue: { label: "Before ProHub", color: "hsl(0,0%,80%)" },
-                afterRevenue: { label: "After ProHub", color: "hsl(0,0%,0%)" },
+                beforeRevenue: { label: "Before Digitomeida", color: "hsl(0,0%,80%)" },
+                afterRevenue: { label: "After Digitomeida", color: "hsl(0,0%,0%)" },
               }}
               className="h-56 sm:h-64 md:h-72 w-full transition-all duration-300"
             >
@@ -210,7 +210,7 @@ export default function SkillsChart() {
           >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Conversion Rate Improvement (%)</h3>
             <ChartContainer
-              config={{ conversionBefore: { label: "Before ProHub", color: "hsl(0,0%,70%)" }, conversionAfter: { label: "After ProHub", color: "hsl(0,0%,0%)" } }}
+              config={{ conversionBefore: { label: "Before Digitomeida", color: "hsl(0,0%,70%)" }, conversionAfter: { label: "After Digitomeida", color: "hsl(0,0%,0%)" } }}
               className="h-56 sm:h-64 md:h-72 w-full transition-all duration-300"
             >
               <ResponsiveContainer width="100%" height="100%">

@@ -7,13 +7,21 @@ export function ValueSection() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    // respect reduced motion preference
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) {
+      setIsVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
+          observer.disconnect()
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.12 },
     )
 
     const element = document.getElementById("value-section")
@@ -38,16 +46,35 @@ export function ValueSection() {
             className={`flex flex-col justify-center transition-all duration-700 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '720ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
+              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+            }}
           >
             <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl leading-tight">
-              Why Choose ProHub?
+              Why Choose Digito?
             </h2>
             <p className="mb-8 text-base sm:text-lg text-muted-foreground leading-relaxed">
               We combine cutting-edge technology with intuitive design to create products that teams love to use.
             </p>
             <ul className="space-y-4">
               {benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li
+                  key={index}
+                  className="flex items-start gap-3"
+                  style={{
+                    transitionProperty: 'opacity, transform, filter',
+                    transitionDuration: '640ms',
+                    transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+                    transitionDelay: isVisible ? `${index * 90 + 120}ms` : '0ms',
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
+                    filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+                  }}
+                >
                   <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 flex-shrink-0">
                     <div className="h-2 w-2 rounded-full bg-primary" />
                   </div>
@@ -62,6 +89,15 @@ export function ValueSection() {
             className={`relative transition-all duration-700 delay-100 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '760ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transitionDelay: isVisible ? '220ms' : '0ms',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(12px) scale(.996)',
+              filter: isVisible ? 'blur(0px)' : 'blur(8px)'
+            }}
           >
             <div className="flex items-center justify-center">
               <div className="w-full md:w-full relative">
@@ -69,7 +105,7 @@ export function ValueSection() {
                   <div className="card-inner">
                     <Image
                       src="/CARD-2.png"
-                      alt="ProHub features"
+                      alt="Digitomeida features"
                       width={1800}
                       height={1100}
                       className="w-full h-auto block"

@@ -1,11 +1,37 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Check, ArrowRight } from "lucide-react"
 
 export function PricingSection() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) {
+      setIsVisible(true)
+      return
+    }
+
+    const el = document.getElementById('pricing')
+    if (!el) {
+      setIsVisible(true)
+      return
+    }
+
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true)
+        obs.disconnect()
+      }
+    }, { threshold: 0.12 })
+
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
 
   return (
     <section id="pricing" className="relative w-full bg-gradient-to-b from-background via-background to-background/95 py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
@@ -27,6 +53,15 @@ export function PricingSection() {
             className="group relative rounded-2xl overflow-hidden transition-all duration-500 ease-out"
             onMouseEnter={() => setHoveredCard("retainer")}
             onMouseLeave={() => setHoveredCard(null)}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '720ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transitionDelay: isVisible ? '120ms' : '0ms',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(10px) scale(.996)',
+              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+            }}
           >
             <div
               className="absolute inset-0 rounded-2xl"
@@ -118,6 +153,15 @@ export function PricingSection() {
             className="group relative rounded-2xl overflow-hidden transition-all duration-500 ease-out"
             onMouseEnter={() => setHoveredCard("landing")}
             onMouseLeave={() => setHoveredCard(null)}
+            style={{
+              transitionProperty: 'opacity, transform, filter',
+              transitionDuration: '720ms',
+              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
+              transitionDelay: isVisible ? '280ms' : '0ms',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(14px) scale(.994)',
+              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
+            }}
           >
             <div
               className="absolute inset-0 rounded-2xl"
