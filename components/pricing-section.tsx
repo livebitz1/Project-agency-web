@@ -136,7 +136,7 @@ export function PricingSection() {
               <div className="mt-auto">
                 <Button
                   size="lg"
-                  className="w-full h-10 flex items-center justify-center rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-all duration-300 group/btn"
+                  className="w-full h-10 py-0 leading-none flex items-center justify-center rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-all duration-300 group/btn"
                   aria-label="Choose Retainer plan"
                 >
                   <span className="flex items-center justify-center gap-2">
@@ -233,7 +233,7 @@ export function PricingSection() {
               <div className="mt-auto">
                 <Button
                   size="lg"
-                  className="w-full h-10 flex items-center justify-center rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all duration-300 group/btn"
+                  className="w-full h-10 py-0 leading-none flex items-center justify-center rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all duration-300 group/btn"
                   aria-label="Start Landing Page Design project"
                 >
                   <span className="flex items-center justify-center gap-2">
