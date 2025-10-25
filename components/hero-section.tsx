@@ -31,6 +31,20 @@ export function HeroSection() {
     return () => observer.disconnect()
   }, [])
 
+  // Smooth-scroll to the Showcase (social-proof) section when the Watch Demo CTA is clicked.
+  // Falls back to navigating to the page with the hash if the section isn't on the current page.
+  function handleWatchDemo(e?: React.MouseEvent) {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault()
+    const id = 'social-proof'
+    const el = typeof document !== 'undefined' ? document.getElementById(id) : null
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else if (typeof window !== 'undefined') {
+      // fallback navigation to anchor on the home page
+      window.location.href = `/#${id}`
+    }
+  }
+
   return (
     <>
       <section id="product" className="relative overflow-hidden pt-8 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32">
@@ -101,7 +115,7 @@ export function HeroSection() {
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 font-medium bg-transparent cta-secondary" aria-label="Watch demo video">
+            <Button size="lg" variant="outline" className="rounded-full px-8 font-medium bg-transparent cta-secondary" aria-label="Watch demo video" onClick={handleWatchDemo}>
               Watch Demo
             </Button>
           </div>
