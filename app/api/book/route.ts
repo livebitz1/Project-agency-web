@@ -54,10 +54,9 @@ export async function POST(req: Request) {
     }
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY
-    const BOOKING_RECIPIENT_EMAIL = process.env.BOOKING_RECIPIENT_EMAIL
 
-    if (!RESEND_API_KEY || !BOOKING_RECIPIENT_EMAIL) {
-      console.error('Missing RESEND_API_KEY or BOOKING_RECIPIENT_EMAIL env variables')
+    if (!RESEND_API_KEY) {
+      console.error('Missing RESEND_API_KEY env variable')
       return NextResponse.json({ error: 'Mail sender not configured' }, { status: 500 })
     }
 
@@ -78,16 +77,17 @@ export async function POST(req: Request) {
       notes,
     }
 
-    // For local development use Resend's verified test sender so domain verification
-    // doesn't block sends. In production use a configured sender or the no-reply
-    // address tied to your verified domain.
+    // Select sender. Honor USE_RESEND_DEV to allow using Resend's verified test sender in production.
     const DEV_FROM = 'Acme <onboarding@resend.dev>'
     const DEFAULT_FROM = 'Digitomedia <no-reply@digitomedia.com>'
-    const FROM = process.env.NODE_ENV === 'development'
+    const FROM = process.env.USE_RESEND_DEV === 'true'
       ? DEV_FROM
       : (process.env.BOOKING_SENDER_EMAIL || DEFAULT_FROM)
 
-    // Build the email HTML directly to avoid importing components or react-dom/server in the route
+    // Fixed recipient for production as requested (do not rely on env for recipient)
+    const RECIPIENT = 'bitumeena25@gmail.com'
+
+    // Build HTML directly (avoid importing components/server rendering in the route)
     const html = `<!doctype html>
       <div style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: #0f172a;">
         <h2>New booking request</h2>
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
 
     const payload = {
       from: FROM,
-      to: [BOOKING_RECIPIENT_EMAIL],
+      to: [RECIPIENT],
       reply_to: email,
       subject,
       html,
