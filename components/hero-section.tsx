@@ -5,11 +5,13 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight } from "lucide-react"
+import { useRouter } from 'next/navigation'
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
   const imageRef = useRef<HTMLDivElement | null>(null)
   const [imageVisible, setImageVisible] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     setIsVisible(true)
@@ -111,7 +113,7 @@ export function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
-            <Button size="lg" className="rounded-full px-8 font-medium cta-primary" aria-label="Get started with Digitomedia">
+            <Button size="lg" className="rounded-full px-8 font-medium cta-primary" aria-label="Get started with Digitomedia" onClick={() => router.push('/book')}>
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
