@@ -33,6 +33,207 @@ export function PricingSection() {
     return () => obs.disconnect()
   }, [])
 
+  const pricingData = [
+    {
+      id: "ecommerce",
+      title: "Ecommerce Website – Custom Code",
+      tiers: [
+        {
+          name: "Low Complexity",
+          features: "Static pages, basic forms, simple backend logic",
+          price: "₹40,000 – ₹50,000",
+          timeline: "2–3 weeks"
+        },
+        {
+          name: "Medium Complexity",
+          features: "Auth, dashboard, CRUD operations, APIs",
+          price: "₹50,000 – ₹65,000",
+          timeline: "3–5 weeks"
+        },
+        {
+          name: "High Complexity",
+          features: "Advanced logic, integrations, custom workflows",
+          price: "₹65,000 – ₹80,000",
+          timeline: "5–7 weeks"
+        }
+      ]
+    },
+    {
+      id: "shopify",
+      title: "Shopify Website",
+      tiers: [
+        {
+          name: "Basic Shopify Setup",
+          features: "Theme install, basic pages, 10–20 products",
+          price: "₹15,000 – ₹25,000",
+          timeline: "1–2 weeks"
+        },
+        {
+          name: "Standard Shopify Store",
+          features: "+ Customization, up to 50 products, payment setup",
+          price: "₹25,000 – ₹40,000",
+          timeline: "2–3 weeks"
+        },
+        {
+          name: "Advanced Shopify Store",
+          features: "+ Multiple integrations, up to 150 products, advanced UI",
+          price: "₹40,000 – ₹80,000",
+          timeline: "3–5 weeks"
+        }
+      ]
+    },
+    {
+      id: "saas",
+      title: "SaaS Platforms",
+      tiers: [
+        {
+          name: "MVP SaaS",
+          features: "Core functionality with essential features",
+          price: "₹1.5L – ₹4L",
+          timeline: "6–12 weeks"
+        },
+        {
+          name: "Standard SaaS",
+          features: "Enhanced features with integrations",
+          price: "₹4L – ₹10L",
+          timeline: "3–5 months"
+        },
+        {
+          name: "Advanced SaaS",
+          features: "Complex workflows and advanced features",
+          price: "₹10L – ₹30L+",
+          timeline: "6–12 months"
+        },
+        {
+          name: "Enterprise SaaS",
+          features: "Full-scale enterprise solution",
+          price: "₹30L – ₹1Cr+",
+          timeline: "9–18 months+"
+        }
+      ]
+    },
+    {
+      id: "erp",
+      title: "ERP Software",
+      tiers: [
+        {
+          name: "Basic ERP",
+          features: "Core modules: Inventory, Sales, Purchases, Users, Reports",
+          price: "₹6,00,000 – ₹12,00,000",
+          timeline: "3–6 months"
+        },
+        {
+          name: "Standard ERP",
+          features: "+ Accounting, HR & Payroll, CRM, Permissions",
+          price: "₹12,00,000 – ₹25,00,000",
+          timeline: "6–10 months"
+        },
+        {
+          name: "Advanced ERP",
+          features: "+ Production/MRP, BI Dashboards, Mobile App",
+          price: "₹25,00,000 – ₹50,00,000",
+          timeline: "9–14 months"
+        },
+        {
+          name: "Enterprise ERP",
+          features: "Custom workflows, Multi-company, AI/Analytics",
+          price: "₹50,00,000 – ₹1,50,00,000+",
+          timeline: "12–24+ months"
+        }
+      ]
+    },
+    {
+      id: "crm",
+      title: "CRM Software",
+      tiers: [
+        {
+          name: "Basic CRM",
+          features: "Contacts, Leads, Deals, Basic Reports",
+          price: "₹1,50,000 – ₹4,00,000",
+          timeline: "6–10 weeks"
+        },
+        {
+          name: "Standard CRM",
+          features: "+ Tasks, Follow-ups, Email Integration, Dashboard",
+          price: "₹4,00,000 – ₹8,00,000",
+          timeline: "3–4 months"
+        },
+        {
+          name: "Advanced CRM",
+          features: "+ AI Insights, Sales Forecasting, Workflow Automation",
+          price: "₹8,00,000 – ₹15,00,000",
+          timeline: "4–6 months"
+        },
+        {
+          name: "Enterprise CRM",
+          features: "Custom Modules, Multi-Team Roles, API Integrations",
+          price: "₹15,00,000 – ₹30,00,000+",
+          timeline: "6–9+ months"
+        }
+      ]
+    },
+    {
+      id: "portal",
+      title: "Enterprise Portal",
+      tiers: [
+        {
+          name: "Basic Enterprise Portal",
+          features: "User login, roles, dashboard, static pages",
+          price: "₹10,00,000 – ₹20,00,000",
+          timeline: "3–5 months"
+        },
+        {
+          name: "Standard Enterprise Portal",
+          features: "+ Workflows, forms, notifications, RBAC",
+          price: "₹20,00,000 – ₹40,00,000",
+          timeline: "5–8 months"
+        },
+        {
+          name: "Advanced Enterprise Portal",
+          features: "+ Integrations (ERP/CRM), analytics, automation",
+          price: "₹40,00,000 – ₹80,00,000",
+          timeline: "8–12 months"
+        },
+        {
+          name: "Enterprise+ Portal (Large Scale)",
+          features: "Multi-tenant, AI/BI, mobile app, high security",
+          price: "₹80,00,000 – ₹2,00,00,000+",
+          timeline: "12–18+ months"
+        }
+      ]
+    },
+    {
+      id: "marketplace",
+      title: "Marketplace Platform",
+      tiers: [
+        {
+          name: "Basic Marketplace",
+          features: "User auth, product/listing, cart, orders",
+          price: "₹8,00,000 – ₹15,00,000",
+          timeline: "4–6 months"
+        },
+        {
+          name: "Standard Marketplace",
+          features: "+ Seller panel, reviews, payments, basic analytics",
+          price: "₹15,00,000 – ₹30,00,000",
+          timeline: "6–8 months"
+        },
+        {
+          name: "Advanced Marketplace",
+          features: "+ Multi-vendor, advanced filters, notifications",
+          price: "₹30,00,000 – ₹50,00,000",
+          timeline: "8–12 months"
+        },
+        {
+          name: "Enterprise Marketplace",
+          features: "+ Logistics, AI recommendations, high scale",
+          price: "₹50,00,000 – ₹1,00,00,000+",
+          timeline: "12–18+ months"
+        }
+      ]
+    }
+  ]
+
   return (
     <section id="pricing" className="relative w-full bg-gradient-to-b from-background via-background to-background/95 py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -41,209 +242,58 @@ export function PricingSection() {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            Pricing that scales with your growth
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+            <span className="text-foreground">OUR</span>
+            <span className="sm:hidden">&nbsp;</span>
+            <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/60 bg-clip-text text-transparent">PRICING</span>
           </h2>
+          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Transparent pricing tiers for every business need—find the perfect fit for your next project.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-stretch mt-8 sm:mt-10 md:mt-12">
-          {/* Left Card - Retainer (Dark Theme) */}
-          <div
-            className="group relative rounded-2xl overflow-hidden transition-all duration-500 ease-out"
-            onMouseEnter={() => setHoveredCard("retainer")}
-            onMouseLeave={() => setHoveredCard(null)}
-            style={{
-              transitionProperty: 'opacity, transform, filter',
-              transitionDuration: '720ms',
-              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
-              transitionDelay: isVisible ? '120ms' : '0ms',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(10px) scale(.996)',
-              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
-            }}
-          >
-            <div
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                background: "linear-gradient(135deg, #0f172a 0%, #0c1425 50%, #0a0f1a 100%)",
-              }}
-            />
+        <div className="space-y-20">
+          {pricingData.map((category) => (
+            <div key={category.id} className="space-y-6">
+              <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+                {category.title.replace('Ecommerce Website – Custom Code', 'Ecommerce Website')}
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {category.tiers.map((tier, index) => (
+                  <div
+                    key={index}
+                    className="group relative bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:border-black hover:-translate-y-1 hover:bg-black"
+                    onMouseEnter={() => setHoveredCard(`${category.id}-${index}`)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 transition-opacity duration-300" />
+                    
+                    <div className="relative space-y-4">
+                      <div className="space-y-2">
+                        <h4 className="text-lg font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">{tier.name}</h4>
+                        <p className="text-sm text-gray-600 min-h-[3rem] group-hover:text-gray-300 transition-colors duration-300">{tier.features}</p>
+                      </div>
 
-            {/* Glossy overlay effect */}
-            <div
-              className="absolute inset-0 rounded-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 40%, rgba(255,255,255,0) 100%)",
-              }}
-            />
-
-            {/* Border glow effect on hover */}
-            <div
-              className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{
-                background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 70%)",
-              }}
-            />
-
-            {/* Card border */}
-            <div className="absolute inset-0 rounded-2xl border border-white/10 group-hover:border-white/20 transition-colors duration-500" />
-
-            {/* Card content */}
-            <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col h-full">
-              {/* Header section */}
-              <div className="mb-8 sm:mb-10">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-0">
-                  <div className="flex-1">
-                    <h3 className="text-3xl font-extrabold text-white">Retainer</h3>
-                    <p className="text-sm text-white/70 mt-1">
-                      Dedicated monthly design capacity with fast turnarounds and a
-                      small, senior team focused on your roadmap.
-                    </p>
-                  </div>
-
-                  <div className="text-right">
-                    <div className="text-3xl sm:text-4xl font-bold text-white">$1,200</div>
-                    <div className="text-sm text-white/60 mt-1">/month</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Features list */}
-              <div className="flex-1 mb-8 sm:mb-10">
-                <ul className="space-y-3 sm:space-y-4">
-                  {[
-                    "Single active request queue to focus on priority work",
-                    "Two senior designers assigned to your account",
-                    "Bi‑weekly progress syncs and roadmap alignment",
-                    "Rapid turnaround on requests",
-                    "Daily dedicated design hours (up to 4h/day)",
-                  ].map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm sm:text-base text-white/80 group/item">
-                      <div className="flex-shrink-0 mt-0.5">
-                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 group-hover:item:bg-white/20 transition-colors duration-300">
-                          <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                      <div className="pt-4 border-t border-gray-100 group-hover:border-gray-700 transition-colors duration-300">
+                        <div className="space-y-3">
+                          <div>
+                            <p className="text-xs text-gray-500 mb-1 group-hover:text-gray-400 transition-colors duration-300">Investment</p>
+                            <p className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300">{tier.price}</p>
+                          </div>
+                          
+                          <div>
+                            <p className="text-xs text-gray-500 mb-1 group-hover:text-gray-400 transition-colors duration-300">Timeline</p>
+                            <p className="text-sm font-medium text-gray-700 group-hover:text-white transition-colors duration-300">{tier.timeline}</p>
+                          </div>
                         </div>
                       </div>
-                      <span className="leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* CTA Button */}
-              <div className="mt-auto">
-                <Button
-                  size="lg"
-                  className="w-full h-10 py-0 leading-none flex items-center justify-center rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-all duration-300 group/btn"
-                  aria-label="Choose Retainer plan"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    Choose Retainer
-                    <ArrowRight className="w-4 h-4 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-                  </span>
-                </Button>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-
-          {/* Right Card - Landing Page Design (Light Theme) */}
-          <div
-            className="group relative rounded-2xl overflow-hidden transition-all duration-500 ease-out"
-            onMouseEnter={() => setHoveredCard("landing")}
-            onMouseLeave={() => setHoveredCard(null)}
-            style={{
-              transitionProperty: 'opacity, transform, filter',
-              transitionDuration: '720ms',
-              transitionTimingFunction: 'cubic-bezier(.2,.9,.3,1)',
-              transitionDelay: isVisible ? '280ms' : '0ms',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(14px) scale(.994)',
-              filter: isVisible ? 'blur(0px)' : 'blur(6px)'
-            }}
-          >
-            <div
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 50%, #f3f4f6 100%)",
-              }}
-            />
-
-            {/* Subtle overlay */}
-            <div
-              className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{
-                background: "radial-gradient(circle at 50% 0%, rgba(0,0,0,0.02), transparent 70%)",
-              }}
-            />
-
-            {/* Card border */}
-            <div className="absolute inset-0 rounded-2xl border border-black/8 group-hover:border-black/12 transition-colors duration-500" />
-
-            {/* Shadow effect */}
-            <div className="absolute inset-0 rounded-2xl shadow-lg shadow-black/5 group-hover:shadow-xl group-hover:shadow-black/10 transition-shadow duration-500" />
-
-            {/* Card content */}
-            <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col h-full">
-              {/* Header section */}
-              <div className="mb-8 sm:mb-10">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-0">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-extrabold text-foreground">Landing Page Design</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Conversion-focused landing pages delivered quickly with full
-                      design and developer-ready handoff.
-                    </p>
-                  </div>
-
-                  <div className="text-right">
-                    <div className="text-3xl sm:text-4xl font-bold text-foreground">$1,800</div>
-                    <div className="text-sm text-muted-foreground mt-1">one-time</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Features list */}
-              <div className="flex-1 mb-8 sm:mb-10">
-                <ul className="space-y-3 sm:space-y-4">
-                  {[
-                    "Wireframes & interactive prototypes",
-                    "Custom responsive layout",
-                    "Desktop, tablet and mobile optimization",
-                    "Brand-consistent visual design",
-                    "Figma deliverables and developer handoff",
-                  ].map((feature, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-sm sm:text-base text-foreground/80 group/item"
-                    >
-                      <div className="flex-shrink-0 mt-0.5">
-                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-black/8 group-hover:item:bg-black/12 transition-colors duration-300">
-                          <Check className="w-3 h-3 text-foreground" strokeWidth={3} />
-                        </div>
-                      </div>
-                      <span className="leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* CTA Button */}
-              <div className="mt-auto">
-                <Button
-                  size="lg"
-                  className="w-full h-10 py-0 leading-none flex items-center justify-center rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all duration-300 group/btn"
-                  aria-label="Start Landing Page Design project"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    Start Project
-                    <ArrowRight className="w-4 h-4 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-                  </span>
-                </Button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

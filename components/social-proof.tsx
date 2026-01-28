@@ -238,35 +238,41 @@ export function SocialProof() {
                     transitionTimingFunction: "cubic-bezier(.2,.9,.2,1)",
                   }}
                 >
-                  <div className="h-56 sm:h-72 md:h-80 lg:h-96 w-full relative rounded-t-lg overflow-hidden">
-                    <Image src={c.image || "/placeholder.svg"} alt={c.title} fill className="object-cover rounded-t-lg" />
+                  <div className="w-full aspect-[16/10] relative rounded-t-lg overflow-hidden">
+                    <Image src={c.image || "/placeholder.svg"} alt={c.title} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover rounded-t-lg" />
                   </div>
                   <div className="p-4 sm:p-6">
                     <h3 className="text-base sm:text-lg font-semibold mb-2 line-clamp-2">{c.title}</h3>
 
-                    {/* Client review bubble */}
+                    {/* Project description for Centaurus Arena */}
+                    {index === 0 && c.description && (
+                      <p className="mb-3 text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{c.description}</p>
+                    )}
+
+                    {/* Project review bubble for each project */}
                     <div className="mt-3">
                       <div className="rounded-2xl bg-muted-foreground/6 p-4 text-sm text-foreground leading-relaxed shadow-sm doodle-anim">
-                        <span className="not-italic">Functional design meets beauty. Their designs are always creative and aligned with our brand.</span>
+                        <span className="not-italic">
+                          {index === 0
+                            ? "Seamless tournament management and real-time match updates. Centaurus Arena brings gamers together for competitive, fair, and exciting events."
+                            : index === 1
+                            ? "Instantly create a fully functional website from your prompt. Say to Site turns your ideas into live web pages in seconds, no coding required."
+                            : index === 2
+                            ? "Twinance provides users with clear financial insights and a comprehensive dashboard, allowing them to view their bank statements in an organized and intuitive manner."
+                            : index === 3
+                            ? "Inteliq enables users to exchange tokens on the Solana chain while interacting with AI, send SOL, and access real-time market data simply by prompting the AI."
+                            : index === 4
+                            ? "Agenix features a modern UI designed to manage and interact with multiple AI agents, providing users with a seamless experience for leveraging several AI-powered tools in one place."
+                            : index === 5
+                            ? "Lemo is a 3D GPU-focused website with advanced animations and integrated AI that provides insights about GPUs. The application offers a seamless experience and a sleek, modern UI."
+                            : "Functional design meets beauty. Their designs are always creative and aligned with our brand."}
+                        </span>
                       </div>
                     </div>
 
-                    {/* Footer: avatar + client info + small chat bubble */}
+                    {/* Footer: removed avatar, client info, and chat bubble */}
                     <div className="mt-4 flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3">
-                        <img src="/placeholder-user.jpg" alt={c.title + ' client'} className="h-10 w-10 rounded-full object-cover doodle-avatar" />
-                        <div>
-                          <div className="font-semibold text-sm text-foreground">AI Meeting Recorder</div>
-                          <div className="text-xs text-muted-foreground">Landing Page Design</div>
-                        </div>
-                      </div>
-
-                      <div className="hidden sm:flex items-center">
-                        <div className="rounded-2xl bg-black text-white px-4 py-2 text-sm shadow-md flex items-center gap-3">
-                          <span>Thank you tl;dv</span>
-                          <span className="text-xs text-muted-foreground/70">client</span>
-                        </div>
-                      </div>
+                      {/* All client info and avatar removed */}
                     </div>
                   </div>
                 </article>
@@ -499,16 +505,13 @@ export function SocialProof() {
 
 // Case studies data (descriptions removed)
 const caseStudies = [
-  { title: "Digitomedia Dashboard Redesign", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Marketing Site Refresh", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Motion Toolkit", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Brand System & Design Ops", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Enterprise Admin Suite", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Onboarding Flow Optimization", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Video Content Platform", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "E-commerce Checkout Flow", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Social Media Dashboard", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Data Analytics Platform", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Customer Feedback Portal", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
-  { title: "Project Management Tool", image: "https://i.pinimg.com/1200x/a6/a6/5b/a6a65ba7cd4281c32baa9c9fa90920c5.jpg" },
+  {
+    title: "Centaurus Arena",
+    image: "https://himanshumeena.vercel.app/images/projects/centaurus-arena-screenshot.png",
+  },
+  { title: "Say to Site", image: "https://himanshumeena.vercel.app/images/projects/say-to-site-screenshot.png" },
+  { title: "Twinance", image: "https://himanshumeena.vercel.app/images/projects/Gvpbic6XMAAl8U_.jpg" },
+  { title: "Inteliq", image: "https://himanshumeena.vercel.app/images/projects/Screenshot%202025-08-02%20191132.png" },
+  { title: "Agenix", image: "https://himanshumeena.vercel.app/images/projects/Screenshot%202025-08-02%20191359.png" },
+  { title: "Lemo", image: "https://himanshumeena.vercel.app/images/projects/Screenshot%202025-06-01%20171452.png" },
 ]
