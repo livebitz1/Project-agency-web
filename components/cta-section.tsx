@@ -42,11 +42,11 @@ export function CTASection() {
               Join hundreds of teams already using Insalink to innovate faster and deliver better results.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-              <Button size="lg" className="rounded-full px-8 font-medium">
+              <Button size="lg" className="rounded-full px-8 font-medium" onClick={() => window.location.href = '/book'}>
                Book Now
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 font-medium bg-transparent">
+              <Button size="lg" variant="outline" className="rounded-full px-8 font-medium bg-transparent" onClick={() => window.location.href = '/book'}>
                 Schedule Demo
               </Button>
             </div>
