@@ -19,7 +19,7 @@ import { Navbar } from "@/components/navbar"
 import { User, Layers, Calendar, ClipboardList, ArrowRight, ArrowLeft, Check } from "lucide-react"
 import { Spinner } from "@/components/ui/spinner"
 
-type ProjectType = "Web Development" | "Digital Marketing" | "Mobile App" | "Branding" | "Other"
+type ProjectType = "Ecommerce Website" | "Shopify Website" | "SaaS Platform" | "ERP Software" | "CRM Software" | "Enterprise Portal" | "Marketplace Platform" | "Other"
 
 type FormState = {
   fullName: string
@@ -191,7 +191,7 @@ export default function BookPage() {
                     </div>
                     <div className="min-w-0">
                       <h1 className="text-2xl sm:text-3xl font-bold truncate">Book a Meeting</h1>
-                      <p className="text-sm text-muted-foreground mt-2 max-w-2xl leading-relaxed">Quick 3‑step brief — let’s get started.</p>
+                      <p className="text-sm text-muted-foreground mt-2 max-w-2xl leading-relaxed">Quick 3‑step brief — let's get started.</p>
                       <div className="mt-3 flex items-center gap-4 text-xs text-muted-foreground">
                         <div className="inline-flex items-center gap-2"><User className="h-4 w-4 opacity-70"/> Personalised call</div>
                         <div className="inline-flex items-center gap-2"><Layers className="h-4 w-4 opacity-70"/> Project-focused</div>
@@ -268,10 +268,13 @@ export default function BookPage() {
                               <SelectValue placeholder="Select a type" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="Web Development">Web Development</SelectItem>
-                              <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
-                              <SelectItem value="Mobile App">Mobile App</SelectItem>
-                              <SelectItem value="Branding">Branding</SelectItem>
+                              <SelectItem value="Ecommerce Website">Ecommerce Website</SelectItem>
+                              <SelectItem value="Shopify Website">Shopify Website</SelectItem>
+                              <SelectItem value="SaaS Platform">SaaS Platform</SelectItem>
+                              <SelectItem value="ERP Software">ERP Software</SelectItem>
+                              <SelectItem value="CRM Software">CRM Software</SelectItem>
+                              <SelectItem value="Enterprise Portal">Enterprise Portal</SelectItem>
+                              <SelectItem value="Marketplace Platform">Marketplace Platform</SelectItem>
                               <SelectItem value="Other">Other</SelectItem>
                             </SelectContent>
                           </Select>
@@ -285,9 +288,14 @@ export default function BookPage() {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="none">No preference</SelectItem>
-                              <SelectItem value="<$5k">&lt;$5k</SelectItem>
-                              <SelectItem value="$5k-$15k">$5k-$15k</SelectItem>
-                              <SelectItem value="$15k+">$15k+</SelectItem>
+                              <SelectItem value="<₹50k">&lt;₹50k</SelectItem>
+                              <SelectItem value="₹50k-₹1L">₹50k-₹1L</SelectItem>
+                              <SelectItem value="₹1L-₹5L">₹1L-₹5L</SelectItem>
+                              <SelectItem value="₹5L-₹10L">₹5L-₹10L</SelectItem>
+                              <SelectItem value="₹10L-₹25L">₹10L-₹25L</SelectItem>
+                              <SelectItem value="₹25L-₹50L">₹25L-₹50L</SelectItem>
+                              <SelectItem value="₹50L-₹1Cr">₹50L-₹1Cr</SelectItem>
+                              <SelectItem value="₹1Cr+">₹1Cr+</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -383,7 +391,7 @@ export default function BookPage() {
 
                 <div className="rounded-xl bg-gradient-to-tr from-primary/10 to-muted-foreground/6 p-6 border border-border text-left">
                   <h4 className="text-sm font-medium leading-tight">Need immediate help?</h4>
-                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">Email us directly at <a className="text-primary underline" href="mailto:hello@digitomedia.com">hello@digitomedia.com</a></p>
+                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">Email us directly at <a className="text-primary underline" href="mailto:hello@insalink.com">hello@insalink.com</a></p>
                   <div className="mt-4">
                     <Link href="/" className="text-sm text-muted-foreground underline">Back home</Link>
                   </div>

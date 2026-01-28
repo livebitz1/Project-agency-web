@@ -55,7 +55,7 @@ export function ValueSection() {
             }}
           >
             <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl leading-tight">
-              Why Choose Digitomedia?
+              Why Choose Insalink?
             </h2>
             <p className="mb-8 text-base sm:text-lg text-muted-foreground leading-relaxed">
               We combine cutting-edge technology with intuitive design to create products that teams love to use.
@@ -105,7 +105,7 @@ export function ValueSection() {
                   <div className="card-inner">
                     <Image
                       src="/CARD-2.png"
-                      alt="Digitomedia features"
+                      alt="Insalink features"
                       width={1800}
                       height={1100}
                       className="w-full h-auto block"

@@ -43,7 +43,7 @@ export function EmailTemplate(props: Props) {
       <p><strong>Preferred:</strong> {preferredDate || '—'} {preferredTime ? `at ${preferredTime}` : ''}</p>
       {notes && <p><strong>Notes:</strong><br />{notes}</p>}
       <hr style={{ marginTop: 12, marginBottom: 12, border: 0, borderTop: '1px solid #e6e6e6' }} />
-      <p style={{ fontSize: 12, color: '#6b7280' }}>This email was sent from the Digitomedia booking form.</p>
+      <p style={{ fontSize: 12, color: '#6b7280' }}>This email was sent from the Insalink booking form.</p>
     </div>
   )
 }

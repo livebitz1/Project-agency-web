@@ -39,7 +39,7 @@ export function CTASection() {
               Ready to Transform Your Workflow?
             </h2>
             <p className="mb-8 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Join hundreds of teams already using Digitomedia to innovate faster and deliver better results.
+              Join hundreds of teams already using Insalink to innovate faster and deliver better results.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <Button size="lg" className="rounded-full px-8 font-medium">

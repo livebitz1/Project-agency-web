@@ -79,7 +79,7 @@ export async function POST(req: Request) {
 
     // Select sender. Honor USE_RESEND_DEV to allow using Resend's verified test sender in production.
     const DEV_FROM = 'Acme <onboarding@resend.dev>'
-    const DEFAULT_FROM = 'Digitomedia <no-reply@digitomedia.com>'
+    const DEFAULT_FROM = 'Insalink <no-reply@insalink.com>'
     const FROM = process.env.USE_RESEND_DEV === 'true'
       ? DEV_FROM
       : (process.env.BOOKING_SENDER_EMAIL || DEFAULT_FROM)
