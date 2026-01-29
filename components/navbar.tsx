@@ -2,9 +2,10 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Sparkles, Menu, X, Zap, Grid, BarChart2, Tag } from "lucide-react"
+import { Menu, X, Zap, Grid, BarChart2, Tag } from "lucide-react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -49,10 +50,18 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo (clickable -> home) */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <Sparkles className="h-5 w-5 text-primary-foreground" />
+            <div className="flex items-center">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full" style={{ marginTop: '3px' }}>
+                <Image
+                  src="/Logo.png"
+                  alt="Insalink Logo"
+                  width={56}
+                  height={56}
+                  className="object-contain rounded-[9999px]"
+                />
+              </div>
+              <span className="ml-2 font-bold text-xl block">Insalink</span>
             </div>
-            <span className="hidden font-bold text-foreground sm:inline text-sm">Insalink</span>
           </Link>
 
           {/* Navigation Links - Hidden on mobile */}
