@@ -113,30 +113,46 @@ export function Navbar() {
 
         {/* Mobile Menu: keep mounted but animate open/close for smooth transitions */}
         <div
-          className={`md:hidden border-t border-border/30 overflow-hidden origin-top transform-gpu transition-[max-height,opacity,transform] duration-300 ease-in-out ${
-            isOpen ? 'max-h-60 opacity-100 scale-y-100 py-4' : 'max-h-0 opacity-0 scale-y-95 py-0'
+          className={`md:hidden border-t border-border/30 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+            isOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"
           }`}
         >
-          <div className="space-y-3">
-            {navLinks.map((link) => (
+          <div
+            className={`flex flex-col gap-1 transition-all duration-500 delay-100 ${
+              isOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+          >
+            {navLinks.map((link, i) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e as unknown as React.MouseEvent, link.href)}
-                className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-3"
+                className="group flex items-center gap-4 px-4 py-3 text-base font-medium text-muted-foreground transition-all duration-300 hover:bg-muted/50 hover:text-foreground rounded-lg"
+                style={{
+                  transitionDelay: isOpen ? `${i * 60}ms` : "0ms",
+                  transform: isOpen ? "translateX(0)" : "translateX(-8px)",
+                  opacity: isOpen ? 1 : 0,
+                }}
               >
-                {link.Icon && <link.Icon className="h-4 w-4 text-muted-foreground/90" />}
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted/50 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                  {link.Icon && <link.Icon className="h-4 w-4" />}
+                </div>
                 <span>{link.label}</span>
               </Link>
             ))}
-            {/* Mobile-only entry to book a meeting */}
-            <Link
-              href="/book"
-              onClick={(e) => handleNavClick(e as unknown as React.MouseEvent, '/book')}
-              className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Book
-            </Link>
+            <div className="mt-4 px-4">
+              <Button
+                className="w-full rounded-xl py-6 text-base font-semibold shadow-lg shadow-primary/10 transition-all duration-300 active:scale-[0.98]"
+                onClick={handleGetStarted}
+                style={{
+                  transitionDelay: isOpen ? `${navLinks.length * 60}ms` : "0ms",
+                  transform: isOpen ? "translateY(0)" : "translateY(10px)",
+                  opacity: isOpen ? 1 : 0,
+                }}
+              >
+                Book a consultation
+              </Button>
+            </div>
           </div>
         </div>
       </div>
