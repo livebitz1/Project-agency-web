@@ -102,7 +102,7 @@ export async function POST(req: Request) {
         <p><strong>Preferred:</strong> ${escapeHtml(preferredDate || '—')} ${preferredTime ? `at ${escapeHtml(preferredTime)}` : ''}</p>
         ${notes ? `<p><strong>Notes:</strong><br/>${escapeHtml(notes).replace(/\n/g, '<br/>')}</p>` : ''}
         <hr />
-        <p style="font-size:12px;color:#6b7280;">This email was sent from the Digitomedia booking form.</p>
+        <p style="font-size:12px;color:#6b7280;">This email was sent from the Insalink booking form.</p>
       </div>`
 
     const payload = {

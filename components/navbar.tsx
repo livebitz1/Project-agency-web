@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Zap, Grid, BarChart2, Tag } from "lucide-react"
+import { Menu, X, Zap, Grid, BarChart2, Tag, Info } from "lucide-react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
@@ -15,6 +15,7 @@ export function Navbar() {
     { label: "Projects", href: "#social-proof", Icon: Grid },
     { label: "Analytics", href: "#our-analytics", Icon: BarChart2 },
     { label: "Pricing", href: "#pricing", Icon: Tag },
+    { label: "About", href: "/about", Icon: Info },
   ]
 
   function handleNavClick(e: React.MouseEvent, href: string) {
@@ -113,14 +114,12 @@ export function Navbar() {
 
         {/* Mobile Menu: keep mounted but animate open/close for smooth transitions */}
         <div
-          className={`md:hidden border-t border-border/30 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-            isOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"
-          }`}
+          className={`md:hidden border-t border-border/30 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"
+            }`}
         >
           <div
-            className={`flex flex-col gap-1 transition-all duration-500 delay-100 ${
-              isOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
+            className={`flex flex-col gap-1 transition-all duration-500 delay-100 ${isOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+              }`}
           >
             {navLinks.map((link, i) => (
               <Link

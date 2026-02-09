@@ -56,7 +56,7 @@ const industryDistribution = [
 const keyMetrics = [
   { label: "Avg Revenue Growth", value: "146%" },
   { label: "Avg Conversion Increase", value: "176%" },
-   { label: "Projects Delivered On Time", value: "92%" },
+  { label: "Projects Delivered On Time", value: "92%" },
   { label: "Avg Time-to-Launch", value: "14 days" },
 ]
 
@@ -113,7 +113,7 @@ export default function SkillsChart() {
             <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/60 bg-clip-text text-transparent">ANALYTICS</span>
           </h2>
-          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating Digitomedia’s impact across clients and projects.</p>
+          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">Key metrics and visualizations demonstrating Insalink’s impact across clients and projects.</p>
         </div>
 
         <div className={`w-full space-y-6`}>
@@ -132,11 +132,10 @@ export default function SkillsChart() {
                   transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(10px) scale(.996)',
                   filter: isVisible ? 'blur(0px)' : 'blur(6px)',
                 }}
-                className={`group rounded-lg p-3 md:p-4 border border-gray-200 text-center transition-all duration-700 will-change-transform ${
-                  hoveredMetric === i
+                className={`group rounded-lg p-3 md:p-4 border border-gray-200 text-center transition-all duration-700 will-change-transform ${hoveredMetric === i
                     ? 'bg-black text-white border-black shadow-lg scale-105'
                     : 'bg-gray-50 hover:shadow-md hover:border-gray-300 hover:bg-black hover:text-white hover:scale-105'
-                } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'}`}
+                  } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'}`}
               >
                 <p className={`text-xs md:text-sm mb-1 transition-colors ${hoveredMetric === i ? 'text-gray-200' : 'text-gray-600'} group-hover:text-white`}>
                   {metric.label}
@@ -162,11 +161,10 @@ export default function SkillsChart() {
                   key={btn.id}
                   onClick={() => setActiveChart(btn.id as any)}
                   aria-pressed={activeChart === btn.id}
-                  className={`flex-1 min-w-[45%] py-2 px-2 text-xs font-medium rounded transition-all duration-200 ${
-                    activeChart === btn.id
+                  className={`flex-1 min-w-[45%] py-2 px-2 text-xs font-medium rounded transition-all duration-200 ${activeChart === btn.id
                       ? "bg-black text-white shadow-sm"
                       : "bg-gray-100 text-black hover:bg-gray-200"
-                  }`}
+                    }`}
                 >
                   {btn.label}
                 </button>
@@ -185,11 +183,10 @@ export default function SkillsChart() {
                   key={btn.id}
                   onClick={() => setActiveChart(btn.id as any)}
                   aria-pressed={activeChart === btn.id}
-                  className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-240 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40 ${
-                    activeChart === btn.id
+                  className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-240 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40 ${activeChart === btn.id
                       ? 'bg-foreground text-background shadow-md'
                       : 'bg-transparent text-muted-foreground border border-border/60 hover:bg-muted-foreground/6'
-                  }`}
+                    }`}
                 >
                   {btn.label}
                 </button>
@@ -205,8 +202,8 @@ export default function SkillsChart() {
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Client Revenue Growth (in thousands $)</h3>
             <ChartContainer
               config={{
-                beforeRevenue: { label: "Before Digitomedia", color: "hsl(0,0%,80%)" },
-                afterRevenue: { label: "After Digitomedia", color: "hsl(0,0%,0%)" },
+                beforeRevenue: { label: "Before Insalink", color: "hsl(0,0%,80%)" },
+                afterRevenue: { label: "After Insalink", color: "hsl(0,0%,0%)" },
               }}
               className="h-56 sm:h-64 md:h-72 w-full transition-all duration-300"
             >
@@ -249,7 +246,7 @@ export default function SkillsChart() {
           >
             <h3 className="text-sm md:text-base font-semibold text-black mb-3 transition-colors hover:text-gray-700">Conversion Rate Improvement (%)</h3>
             <ChartContainer
-              config={{ conversionBefore: { label: "Before Digitomedia", color: "hsl(0,0%,70%)" }, conversionAfter: { label: "After Digitomedia", color: "hsl(0,0%,0%)" } }}
+              config={{ conversionBefore: { label: "Before Insalink", color: "hsl(0,0%,70%)" }, conversionAfter: { label: "After Insalink", color: "hsl(0,0%,0%)" } }}
               className="h-56 sm:h-64 md:h-72 w-full transition-all duration-300"
             >
               <ResponsiveContainer width="100%" height="100%">
