@@ -7,7 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Insalink | Innovating Beyond Pixels",
+  title: "Insalink",
   description: "Transform your ideas into powerful digital products with Insalink. We deliver cutting-edge solutions that drive real results for teams that dare to innovate.",
   icons: {
     icon: [
