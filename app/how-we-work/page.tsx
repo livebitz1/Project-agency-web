@@ -217,12 +217,11 @@ export default function HowWeWorkPage() {
             // ── Hero
             const heroTl = gsap.timeline()
             heroTl
-                .from(".hww-badge", { y: 24, opacity: 0, duration: 0.6, ease: "power3.out" })
-                .from(".hww-h1 .line-1", { y: 60, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.3")
-                .from(".hww-h1 .line-2", { y: 60, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.65")
-                .from(".hww-hero-desc", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.5")
-                .from(".hww-hero-cta", { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, "-=0.5")
-                .from(".hww-hero-stats .stat-item", { y: 20, opacity: 0, stagger: 0.1, duration: 0.6, ease: "power3.out" }, "-=0.4")
+                .from(".hww-h1 .line-1", { y: 60, opacity: 0, duration: 0.9, ease: "power3.out" })
+                .from(".hww-h1 .line-2", { y: 60, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.7")
+                .from(".hww-h1 .line-3", { y: 60, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.7")
+                .from(".hww-hero-desc", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+                .from(".hww-hero-stats .stat-item", { y: 20, opacity: 0, stagger: 0.1, duration: 0.6, ease: "power3.out" }, "-=0.5")
 
             // ── Scrolling timeline number (spine progress visual)
             gsap.to(".journey-spine", {
@@ -360,7 +359,7 @@ export default function HowWeWorkPage() {
                     <h1 className="hww-h1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.03em] leading-[1.05] mb-5 text-foreground">
                         <span className="line-1 block">How We Turn</span>
                         <span className="line-2 block">Vision Into</span>
-                        <span className="block bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400 bg-clip-text text-transparent">
+                        <span className="line-3 block bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400 bg-clip-text text-transparent">
                             Reality
                         </span>
                     </h1>
@@ -393,7 +392,7 @@ export default function HowWeWorkPage() {
                             ].map((IconComp, i) => (
                                 <div
                                     key={i}
-                                    className="flex items-center justify-center w-11 h-11 rounded-[11px]"
+                                    className="hww-mobile-icon flex items-center justify-center w-11 h-11 rounded-[11px]"
                                     style={{
                                         background: "linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 60%, #111111 100%)",
                                         boxShadow: "0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
