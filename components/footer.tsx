@@ -14,16 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
           {/* Brand section */}
           <div className="md:col-span-5 lg:col-span-6">
-            <Link href="/" className="flex items-center gap-2 mb-6 group w-fit">
-              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/5 border border-primary/10 group-hover:border-primary/20 transition-colors">
-                <Image
-                  src="/Logo.png"
-                  alt="Insalink Logo"
-                  width={32}
-                  height={32}
-                  className="object-contain"
-                />
-              </div>
+            <Link href="/" className="flex items-center mb-6 group w-fit">
               <span className="text-2xl font-bold tracking-tight text-foreground">Insalink</span>
             </Link>
             <p className="text-base text-muted-foreground leading-relaxed max-w-md">
