@@ -305,7 +305,7 @@ export default function HowWeWorkPage() {
             <Navbar />
 
             {/* ─── HERO ──────────────────────────────────────────────────── */}
-            <section className="relative flex flex-col items-center justify-center text-center px-4 pt-20 pb-16 sm:pt-28 sm:pb-24 overflow-hidden min-h-[88vh]">
+            <section className="relative flex flex-col items-center justify-center text-center px-5 pt-8 pb-10 sm:pt-28 sm:pb-24 overflow-hidden sm:min-h-[88vh]">
 
                 {/* Full-area dot grid */}
                 <DotGrid opacity={0.04} />
@@ -365,8 +365,8 @@ export default function HowWeWorkPage() {
                         </span>
                     </h1>
 
-                    <p className="hww-hero-desc text-sm sm:text-base text-muted-foreground max-w-xs sm:max-w-sm mx-auto leading-relaxed mb-8">
-                        A 7-step journey from your first call to a product your users will love — and your competitors will fear.
+                    <p className="hww-hero-desc text-sm sm:text-base text-muted-foreground max-w-xs sm:max-w-sm mx-auto leading-relaxed mb-6 sm:mb-8">
+                        A 6-step journey from your first call to a product your users will love — and your competitors will fear.
                     </p>
 
                     {/* Inline stats */}
@@ -383,15 +383,9 @@ export default function HowWeWorkPage() {
                         ))}
                     </div>
 
-                    {/* ── Mobile icon strip (hidden on desktop) ────────── */}
-                    <div className="md:hidden w-full overflow-x-auto pb-2 -mx-4 px-4">
-                        <div
-                            className="flex gap-3 w-max"
-                            style={{
-                                maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-                                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-                            }}
-                        >
+                    {/* ── Mobile icon grid (hidden on desktop) ────────── */}
+                    <div className="md:hidden w-full mt-2">
+                        <div className="flex flex-wrap justify-center gap-3">
                             {[
                                 MessageSquare, PenTool, Code2, Lightbulb, Shield,
                                 Zap, HeartHandshake, Rocket, BarChart3, CheckCircle2,
@@ -399,7 +393,7 @@ export default function HowWeWorkPage() {
                             ].map((IconComp, i) => (
                                 <div
                                     key={i}
-                                    className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-[12px]"
+                                    className="flex items-center justify-center w-11 h-11 rounded-[11px]"
                                     style={{
                                         background: "linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 60%, #111111 100%)",
                                         boxShadow: "0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
@@ -411,10 +405,19 @@ export default function HowWeWorkPage() {
                             ))}
                         </div>
                     </div>
+
+                    {/* Scroll hint — inline on mobile, absolute on desktop */}
+                    <div className="md:hidden flex flex-col items-center gap-1.5 mt-8 opacity-40">
+                        <span className="text-[9px] uppercase tracking-widest text-muted-foreground">Scroll to explore</span>
+                        <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
+                            <rect x="1" y="1" width="12" height="20" rx="6" stroke="currentColor" strokeWidth="1.5" />
+                            <circle cx="7" cy="7" r="2" fill="currentColor" className="animate-bounce" />
+                        </svg>
+                    </div>
                 </div>
 
-                {/* Scroll hint */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-35 animate-bounce">
+                {/* Scroll hint — only visible on desktop */}
+                <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 opacity-35 animate-bounce">
                     <span className="text-[9px] uppercase tracking-widest text-muted-foreground">Scroll to explore</span>
                     <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
                         <rect x="1" y="1" width="12" height="20" rx="6" stroke="currentColor" strokeWidth="1.5" />
