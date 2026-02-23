@@ -20,14 +20,12 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { useEffect, useState } from "react"
 
 const clientBusinessImpactData = [
-  { client: "TechStartup", beforeRevenue: 250, afterRevenue: 625, conversionBefore: 2.1, conversionAfter: 5.8 },
-  { client: "E-Commerce", beforeRevenue: 480, afterRevenue: 1104, conversionBefore: 1.8, conversionAfter: 4.2 },
-  { client: "SaaS Platform", beforeRevenue: 320, afterRevenue: 832, conversionBefore: 2.5, conversionAfter: 6.8 },
-  { client: "FinTech", beforeRevenue: 550, afterRevenue: 1210, conversionBefore: 3.2, conversionAfter: 7.1 },
-  { client: "Healthcare", beforeRevenue: 180, afterRevenue: 486, conversionBefore: 1.5, conversionAfter: 4.9 },
-  { client: "Marketplace", beforeRevenue: 410, afterRevenue: 980, conversionBefore: 2.0, conversionAfter: 5.1 },
-  { client: "EdTech", beforeRevenue: 140, afterRevenue: 392, conversionBefore: 1.3, conversionAfter: 3.6 },
-  { client: "Gaming", beforeRevenue: 300, afterRevenue: 720, conversionBefore: 1.9, conversionAfter: 4.7 },
+  { client: "Centaurus Arena", beforeRevenue: 300, afterRevenue: 750, conversionBefore: 1.8, conversionAfter: 4.5 },
+  { client: "Say to Site", beforeRevenue: 120, afterRevenue: 480, conversionBefore: 1.2, conversionAfter: 5.2 },
+  { client: "Twinance", beforeRevenue: 550, afterRevenue: 1400, conversionBefore: 3.1, conversionAfter: 7.8 },
+  { client: "Inteliq", beforeRevenue: 420, afterRevenue: 1100, conversionBefore: 2.4, conversionAfter: 6.5 },
+  { client: "Agenix", beforeRevenue: 280, afterRevenue: 840, conversionBefore: 1.9, conversionAfter: 5.5 },
+  { client: "Lemo", beforeRevenue: 200, afterRevenue: 580, conversionBefore: 1.5, conversionAfter: 4.8 },
 ]
 
 const monthlyProgressionData = [
@@ -46,18 +44,17 @@ const monthlyProgressionData = [
 ]
 
 const industryDistribution = [
-  { name: "SaaS", value: 26, color: "#0f172a" },
-  { name: "E-Commerce", value: 24, color: "#0ea5a4" },
-  { name: "FinTech", value: 18, color: "#7c3aed" },
-  { name: "Healthcare", value: 16, color: "#ef4444" },
-  { name: "Other", value: 16, color: "#94a3b8" },
+  { name: "AI & SaaS", value: 40, color: "#0f172a" },
+  { name: "FinTech", value: 25, color: "#7c3aed" },
+  { name: "Crypto & Web3", value: 20, color: "#0ea5a4" },
+  { name: "Gaming", value: 15, color: "#ef4444" },
 ]
 
 const keyMetrics = [
-  { label: "Avg Revenue Growth", value: "146%" },
-  { label: "Avg Conversion Increase", value: "176%" },
-  { label: "Projects Delivered On Time", value: "92%" },
-  { label: "Avg Time-to-Launch", value: "14 days" },
+  { label: "Avg Revenue Growth", value: "182%" },
+  { label: "Avg Conversion Increase", value: "215%" },
+  { label: "Projects Delivered", value: "48+" },
+  { label: "Avg Time-to-MVP", value: "12 days" },
 ]
 
 export default function SkillsChart() {
@@ -133,8 +130,8 @@ export default function SkillsChart() {
                   filter: isVisible ? 'blur(0px)' : 'blur(6px)',
                 }}
                 className={`group rounded-lg p-3 md:p-4 border border-gray-200 text-center transition-all duration-700 will-change-transform ${hoveredMetric === i
-                    ? 'bg-black text-white border-black shadow-lg scale-105'
-                    : 'bg-gray-50 hover:shadow-md hover:border-gray-300 hover:bg-black hover:text-white hover:scale-105'
+                  ? 'bg-black text-white border-black shadow-lg scale-105'
+                  : 'bg-gray-50 hover:shadow-md hover:border-gray-300 hover:bg-black hover:text-white hover:scale-105'
                   } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'}`}
               >
                 <p className={`text-xs md:text-sm mb-1 transition-colors ${hoveredMetric === i ? 'text-gray-200' : 'text-gray-600'} group-hover:text-white`}>
@@ -162,8 +159,8 @@ export default function SkillsChart() {
                   onClick={() => setActiveChart(btn.id as any)}
                   aria-pressed={activeChart === btn.id}
                   className={`flex-1 min-w-[45%] py-2 px-2 text-xs font-medium rounded transition-all duration-200 ${activeChart === btn.id
-                      ? "bg-black text-white shadow-sm"
-                      : "bg-gray-100 text-black hover:bg-gray-200"
+                    ? "bg-black text-white shadow-sm"
+                    : "bg-gray-100 text-black hover:bg-gray-200"
                     }`}
                 >
                   {btn.label}
@@ -184,8 +181,8 @@ export default function SkillsChart() {
                   onClick={() => setActiveChart(btn.id as any)}
                   aria-pressed={activeChart === btn.id}
                   className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-240 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40 ${activeChart === btn.id
-                      ? 'bg-foreground text-background shadow-md'
-                      : 'bg-transparent text-muted-foreground border border-border/60 hover:bg-muted-foreground/6'
+                    ? 'bg-foreground text-background shadow-md'
+                    : 'bg-transparent text-muted-foreground border border-border/60 hover:bg-muted-foreground/6'
                     }`}
                 >
                   {btn.label}
