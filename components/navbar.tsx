@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Zap, Grid, BarChart2, Tag, Info } from "lucide-react"
+import { Menu, X, Zap, Grid, BarChart2, Tag, Info, Workflow } from "lucide-react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
@@ -15,6 +15,7 @@ export function Navbar() {
     { label: "Projects", href: "#social-proof", Icon: Grid },
     { label: "Analytics", href: "#our-analytics", Icon: BarChart2 },
     { label: "Pricing", href: "#pricing", Icon: Tag },
+    { label: "How We Work", href: "/how-we-work", Icon: Workflow },
     { label: "About", href: "/about", Icon: Info },
   ]
 
