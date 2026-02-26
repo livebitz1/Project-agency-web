@@ -47,6 +47,15 @@ export default function AboutPage() {
             email: "ashibur@insalink.com",
             achievements: ["Ex-McKinsey", "Built 3 Exits", "Angel Investor"]
         },
+        {
+            name: "Ravi Choudhary",
+            role: "UI/UX Designer",
+            image: "/ravi.png",
+            bio: "Creative visual thinker who transforms complex user flows into seamless, beautiful digital experiences. Passionate about human-centred design and pixel-perfect interfaces.",
+            linkedin: "https://linkedin.com/in/ravichoudhary",
+            email: "ravi@insalink.com",
+            achievements: ["Design Award Winner", "100+ Figma Projects", "Adobe Certified"]
+        },
     ]
 
     const steps = [
@@ -200,7 +209,7 @@ export default function AboutPage() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 team-grid">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 team-grid">
                             {teamMembers.map((member, i) => (
                                 <Card
                                     key={i}
