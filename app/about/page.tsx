@@ -209,7 +209,7 @@ export default function AboutPage() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 team-grid">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 team-grid">
                             {teamMembers.map((member, i) => (
                                 <Card
                                     key={i}
