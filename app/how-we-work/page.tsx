@@ -526,6 +526,29 @@ export default function HowWeWorkPage() {
 
         .hww-connector-label { box-shadow: 0 1px 3px rgba(28,25,23,0.02); }
 
+        /* ═══ MOBILE — AUTO DARK ON SCROLL ═══ */
+        @media (max-width: 1023px) {
+          .hww-card[style*="opacity: 1"] .hww-card-fill {
+            transform: translate3d(0,0,0);
+            transition-delay: 0.3s;
+          }
+          .hww-card[style*="opacity: 1"] .hww-card-num { color: rgba(255,255,255,0.3); }
+          .hww-card[style*="opacity: 1"] .hww-card-phase { color: rgba(255,255,255,0.4); }
+          .hww-card[style*="opacity: 1"] .hww-card-icon-wrap { background-color: rgba(255,255,255,0.1); }
+          .hww-card[style*="opacity: 1"] .hww-card-icon { color: white; }
+          .hww-card[style*="opacity: 1"] .hww-card-title { color: white; }
+          .hww-card[style*="opacity: 1"] .hww-card-sep { width: 40px; background-color: rgba(255,255,255,0.2); }
+          .hww-card[style*="opacity: 1"] .hww-card-desc { color: #a8a29e; }
+          .hww-card[style*="opacity: 1"] .hww-card-check { color: rgba(255,255,255,0.3); }
+          .hww-card[style*="opacity: 1"] .hww-card-del-text { color: rgba(255,255,255,0.6); }
+          .hww-card[style*="opacity: 1"] .hww-card-clock,
+          .hww-card[style*="opacity: 1"] .hww-card-target { color: rgba(255,255,255,0.2); }
+          .hww-card[style*="opacity: 1"] .hww-card-dur,
+          .hww-card[style*="opacity: 1"] .hww-card-milestone { color: rgba(255,255,255,0.35); }
+          .hww-card[style*="opacity: 1"] .hww-card-bottom { width: 100%; }
+          .hww-card[style*="opacity: 1"] { border-color: #292524; }
+        }
+
         /* ═══ REDUCED MOTION ═══ */
         @media (prefers-reduced-motion: reduce) {
           .hww-shimmer, .hww-hero-line, .hww-word,
