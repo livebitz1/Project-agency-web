@@ -184,14 +184,9 @@ export function Navbar() {
                   className="top-nav-logo-img object-contain rounded-full relative z-10"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="top-nav-logo-text font-bold text-lg sm:text-xl text-stone-900 leading-none">
-                  Insalink
-                </span>
-                <span className="top-nav-logo-sub text-[8px] sm:text-[9px] font-semibold text-stone-300 tracking-[0.2em] uppercase leading-none mt-0.5">
-                  Studio
-                </span>
-              </div>
+              <span className="top-nav-logo-text font-bold text-lg sm:text-xl text-stone-900 leading-none">
+                Insalink
+              </span>
             </Link>
 
             <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center">
