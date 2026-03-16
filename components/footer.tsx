@@ -88,9 +88,6 @@ export function Footer() {
   return (
     <footer ref={footerRef} className="relative border-t border-stone-200/60 bg-white overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-stone-300/60 to-transparent" />
-      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] lg:w-[800px] h-[300px] md:h-[500px] lg:h-[600px] bg-stone-100/40 rounded-full blur-[80px] md:blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/4 -right-16 md:-right-32 lg:-right-48 w-[200px] md:w-[350px] lg:w-[450px] h-[200px] md:h-[350px] lg:h-[450px] bg-stone-50/50 rounded-full blur-[60px] md:blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/3 -left-24 w-[250px] md:w-[300px] h-[250px] md:h-[300px] bg-stone-50/30 rounded-full blur-[80px] pointer-events-none hidden md:block" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
 
@@ -126,14 +123,9 @@ export function Footer() {
           {/* Mobile Brand */}
           <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translate3d(0,0,0)" : "translate3d(0,20px,0)", transitionProperty: "opacity, transform", transitionDuration: "0.7s", transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)", transitionDelay: "0.15s", willChange: "transform, opacity", backfaceVisibility: "hidden" }}>
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-stone-50 to-stone-100/50 border border-stone-200/60 p-5 mb-6 shadow-[0_1px_4px_rgba(28,25,23,0.03),0_4px_16px_rgba(28,25,23,0.02)]">
-              <div className="absolute top-0 right-0 w-24 h-24 pointer-events-none">
-                <div className="absolute top-3 right-3 w-16 h-16 rounded-full bg-stone-200/30 blur-lg" />
-                <div className="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-300/20" />
-              </div>
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-stone-900"><span className="text-white text-sm font-black">I</span></div>
-                  <div><h4 className="text-lg font-black tracking-[-0.02em] text-stone-900 leading-none">Insalink</h4><p className="text-[10px] font-medium text-stone-400 tracking-wider uppercase mt-0.5">Studio</p></div>
+                  <h4 className="text-lg font-black tracking-[-0.02em] text-stone-900 leading-none">Insalink</h4>
                 </div>
                 <p className="text-[12px] text-stone-400 leading-[1.7] font-light mb-5 max-w-[260px]">Transforming ambitious visions into high-performance digital landmarks.</p>
                 <div className="flex flex-wrap gap-2">
@@ -226,16 +218,9 @@ export function Footer() {
             {/* Brand Panel */}
             <div className="col-span-12 lg:col-span-4" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translate3d(0,0,0)" : "translate3d(0,24px,0)", transitionProperty: "opacity, transform", transitionDuration: "0.8s", transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)", transitionDelay: "0.15s", willChange: "transform, opacity", backfaceVisibility: "hidden" }}>
               <div className="group/brand relative overflow-hidden rounded-2xl lg:rounded-3xl bg-gradient-to-br from-stone-50 to-stone-100/30 border border-stone-200/60 p-6 lg:p-8 h-full transition-shadow duration-600 shadow-[0_1px_4px_rgba(28,25,23,0.02),0_6px_24px_rgba(28,25,23,0.02)] hover:shadow-[0_2px_8px_rgba(28,25,23,0.04),0_8px_32px_rgba(28,25,23,0.03)]">
-                <div className="absolute top-0 right-0 w-40 h-40 pointer-events-none">
-                  <div className="absolute top-4 right-4 w-28 h-28 rounded-full bg-stone-200/20 blur-2xl transition-opacity duration-800 group-hover/brand:opacity-60" />
-                  <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-stone-300/15 transition-[transform,opacity] duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/brand:scale-150 group-hover/brand:opacity-0" />
-                </div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 pointer-events-none"><div className="absolute bottom-4 left-4 w-20 h-20 rounded-full bg-stone-200/15 blur-xl" /></div>
-
                 <div className="relative z-10">
                   <div className="flex items-center gap-3.5 mb-6">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-stone-900 transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/brand:scale-105 group-hover/brand:rotate-3"><span className="text-white text-base font-black">I</span></div>
-                    <div><h4 className="text-xl lg:text-2xl font-black tracking-[-0.03em] text-stone-900 leading-none">Insalink</h4><p className="text-[10px] font-semibold text-stone-400 tracking-[0.25em] uppercase mt-1">Studio</p></div>
+                    <h4 className="text-xl lg:text-2xl font-black tracking-[-0.03em] text-stone-900 leading-none">Insalink</h4>
                   </div>
 
                   <p className="text-[13px] lg:text-sm text-stone-400 leading-[1.8] font-light mb-6 max-w-xs">Transforming ambitious visions into high-performance digital landmarks that stand the test of time.</p>
@@ -411,7 +396,7 @@ export function Footer() {
             <div className="relative h-px w-full overflow-hidden"><div className="absolute inset-0 bg-gradient-to-r from-transparent via-stone-200/80 to-transparent" /></div>
             <div className="flex items-center justify-between py-8" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translate3d(0,0,0)" : "translate3d(0,12px,0)", transitionProperty: "opacity, transform", transitionDuration: "0.8s", transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)", transitionDelay: "0.55s", willChange: "transform, opacity", backfaceVisibility: "hidden" }}>
               <div className="flex items-center gap-5">
-                <p className="text-[11px] font-semibold text-stone-300 tracking-[0.15em] uppercase">© {new Date().getFullYear()} Insalink Studio</p>
+                <p className="text-[11px] font-semibold text-stone-300 tracking-[0.15em] uppercase">© {new Date().getFullYear()} Insalink</p>
                 <div className="w-px h-3.5 bg-stone-200" />
                 <div className="group/stat flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-50 border border-stone-100 cursor-default"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /><span className="text-[10px] font-semibold text-stone-400 tracking-wider uppercase transition-colors duration-400 group-hover/stat:text-stone-600">System Operational</span></div>
               </div>
