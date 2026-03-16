@@ -2,10 +2,9 @@ import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { SocialProof } from "@/components/social-proof"
 import { ValueSection } from "@/components/value-section"
-import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { PricingSection } from "@/components/pricing-section"
-import SkillsChart from "@/components/skills-chart"
+import { ServicesSection } from "@/components/workflow-showcase"
 
 export default function Home() {
   return (
@@ -22,10 +21,7 @@ export default function Home() {
 
         <ValueSection />
         {/* OUR SKILLS section (charts) */}
-        <SkillsChart />
-        {/* Pricing section moved to follow OUR SKILLS as requested */}
-        <PricingSection />
-        <CTASection />
+        <ServicesSection />
       </main>
       <Footer />
     </div>
