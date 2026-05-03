@@ -391,7 +391,7 @@ export default function BookPage() {
 
                 <div className="rounded-xl bg-gradient-to-tr from-primary/10 to-muted-foreground/6 p-6 border border-border text-left">
                   <h4 className="text-sm font-medium leading-tight">Need immediate help?</h4>
-                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">Email us directly at <a className="text-primary underline" href="mailto:hello@insalink.com">hello@insalink.com</a></p>
+                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">Email us directly at <a className="text-primary underline" href="mailto:contact@insalink.com">contact@insalink.com</a></p>
                   <div className="mt-4">
                     <Link href="/" className="text-sm text-muted-foreground underline">Back home</Link>
                   </div>
